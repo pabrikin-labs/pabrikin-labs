@@ -125,7 +125,12 @@ header {
   border-bottom: 1px solid var(--border);
   padding-bottom: 10px;
   overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-blue) transparent;
 }
+
+.sub-nav::-webkit-scrollbar { height: 4px; }
+.sub-nav::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 10px; }
 
 .sub-item {
   padding: 5px 15px;
