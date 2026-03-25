@@ -28,7 +28,6 @@ async function loadSVG(url, containerId) {
         const container = document.getElementById(containerId);
         if (container) {
             container.innerHTML = svgData;
-            // MutationObserver di interactions.js otomatis mendeteksi perubahan ini
         }
     } catch (error) {
         console.error("Gagal memuat SVG:", error);
@@ -44,12 +43,11 @@ function switchPage(el, pageId) {
   document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
   document.getElementById('page-' + pageId).classList.add('active');
   
-  if(pageId === 'boiler') { 
-    setTimeout(() => { 
-        if(typeof initBoilerInteractions === 'function') initBoilerInteractions(); 
-        if(typeof resetZoom === 'function') resetZoom(); 
-    }, 150); 
-  }
+  // Refresh zoom dan interaksi saat ganti menu
+  setTimeout(() => { 
+      if(typeof initBoilerInteractions === 'function') initBoilerInteractions(); 
+      if(typeof resetZoom === 'function') resetZoom(); 
+  }, 150); 
 }
 
 // Navigation Sub-Layout Boiler 
@@ -70,6 +68,28 @@ function switchBoilerLayout(el, layoutKey) {
     }
 }
 
+// ==========================================
+// PERBAIKAN: FUNGSI FILTER YANG HILANG
+// ==========================================
+function initFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+        btn.onclick = function() {
+            this.classList.toggle('active');
+            const targetId = this.getAttribute('data-target');
+            const svgElements = document.querySelectorAll(`[id*="${targetId}"]`);
+            
+            svgElements.forEach(el => {
+                if(this.classList.contains('active')) {
+                    el.classList.remove('dimmed');
+                } else {
+                    el.classList.add('dimmed');
+                }
+            });
+        };
+    });
+}
+
 // Live Clock
 function updateClock() {
     const now = new Date();
@@ -87,5 +107,5 @@ window.addEventListener('load', () => {
     loadSVG('assets/logo-pabrikin.svg', 'logo-place');
     loadSVG('assets/boiler75.svg', 'diagram-stoker');
     loadSVG('assets/distribution.svg', 'diagram-distribution');
-    initFilters();
+    initFilters(); // Memanggil fungsi filter yang sekarang sudah ada
 });
