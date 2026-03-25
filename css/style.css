@@ -67,10 +67,13 @@ footer { background: var(--panel); border-top: 1px solid var(--border); padding:
     .footer-status span { display: none; }
 }
 
-/* =======================================================
-   ANIMASI PIPA (TIDAK ADA LAGI FLOW-REVERSE)
-   ======================================================= */
-rect, circle, ellipse, polygon { animation: none !important; stroke-dasharray: none !important; }
+
+/* 2. PROTEKSI: Kotak dan Lingkaran dilarang ikut bergerak */
+/* Tambahkan [stroke] di belakangnya agar posisinya menang dari animasi jalur */
+rect[stroke], circle[stroke], ellipse[stroke], polygon[stroke] {
+    animation: none !important;
+    stroke-dasharray: none !important;
+}
 
 /* Menyatukan semua target elemen berdasarkan ID Grup dan Warna menjadi satu aliran Forward Natural */
 #STEAM_LINES path, #ELECT_LINES path, #WATER_LINES path, #COMP_LINES path,

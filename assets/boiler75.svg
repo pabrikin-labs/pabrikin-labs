@@ -33,22 +33,22 @@
 <path id="blade BF P" d="M2667.18 1037.33C2652.11 1042.22 2635.89 1042.22 2620.82 1037.33L2644 966.001L2667.18 1037.33ZM2583.32 1010.08C2574.01 997.271 2569 981.839 2569 966.001H2644L2583.32 1010.08ZM2719 966.001C2719 981.839 2713.99 997.271 2704.68 1010.08L2644 966.001H2719ZM2644 966.001L2583.32 921.917C2592.63 909.104 2605.76 899.566 2620.82 894.672L2644 966.001ZM2667.18 894.672C2682.24 899.566 2695.37 909.104 2704.68 921.917L2644 966.001L2667.18 894.672Z" fill="#5E5E5E"/>
 <path id="LINE brown FLY ASH" d="M2648.26 2421.91L2702.79 2481.9L2820.5 2481.9" stroke="#806341" stroke-width="6"/>
 <path id="LINE brown BOTTOM ASH" d="M1046.25 2501.34L1100.79 2561.34L1218.5 2561.34" stroke="#806341" stroke-width="6"/>
-<path id="LINE orange COAL" d="M379.09 1762.71L379.09 1565.3L318.001 1504.21" stroke="#DB7241" stroke-width="6"/>
+<path id="LINE orange COAL" d="M318.001 1504.21L379.09 1565.3L379.09 1762.71" stroke="#DB7241" stroke-width="6"/>
 <path id="LINE pink CHIMNEY" d="M3161 2161H3298" stroke="#D37FCC" stroke-width="6"/>
 <path id="LINE pink ESP to ID FAN" d="M2820 2161H2954" stroke="#D37FCC" stroke-width="6"/>
 <path id="LINE pink APH to ESP" d="M2350.5 1934.5L2350.5 2096.5L2398 2157.68L2472.9 2157.68" stroke="#D37FCC" stroke-width="6"/>
-<path id="LINE pink ECO to APH" d="M2310 1595.5L2310 1294L2213.5 1238" stroke="#D37FCC" stroke-width="6"/>
+<path id="LINE pink ECO to APH" d="M2213.5 1238L2310 1294L2310 1595.5" stroke="#D37FCC" stroke-width="6"/>
 <path id="LINE green APH to FURN" d="M2057 1766L1583 1766" stroke="#41BA4F" stroke-width="6"/>
 <path id="LINE green FD FAN to APH" d="M2179 2153.5L2236 2096.5L2236 1934.5" stroke="#41BA4F" stroke-width="6"/>
 <path id="LINE green AMBIENT AIR" d="M1843 2129.5L1843 2175L1897.5 2231L2001.5 2231" stroke="#41BA4F" stroke-width="6"/>
-<path id="LINE yellow MAIN STEAM" d="M2012 159.725L1857.5 159.725L1806.58 205.5L1806.58 353.498" stroke="#FFF600" stroke-width="6"/>
-<path id="LINE red DRUM to SUPER" d="M1050.5 304.5L926.498 180.498L792.998 180.498L725.997 247.499" stroke="#D63C3C" stroke-width="6"/>
-<path id="LINE blue WATER WALL LEFT" d="M562 1703L562 530" stroke="#0066FF" stroke-width="6"/>
+<path id="LINE yellow MAIN STEAM" d="M1806.58 353.498L1806.58 205.5L1857.5 159.725L2012 159.725" stroke="#FFF600" stroke-width="6"/>
+<path id="LINE red DRUM to SUPER" d="M725.997 247.499L792.998 180.498L926.498 180.498L1050.5 304.5" stroke="#D63C3C" stroke-width="6"/>
+<path id="LINE blue WATER WALL LEFT" d="M562 530L562 1703" stroke="#0066FF" stroke-width="6"/>
 <path id="LINE blue DOWNCOMER" d="M651.549 509.5L651.549 774.89L1521 1050.5L1521 1926L1470 1993.36L562 1993.36L562 1702L468.998 1615.63L468.998 509.5" stroke="#0066FF" stroke-width="6"/>
 <path id="LINE blue ECO to DRUM" d="M2213.5 965.5L2273.5 905.5L2273.5 308.001L2220 241.501L1090.5 241.499L959.501 111L765.501 111L682.501 187.501" stroke="#0066FF" stroke-width="6"/>
 <path id="LINE blue BFP to ECO" d="M2574.5 1043.5L2518.5 1120L2211 1120" stroke="#0066FF" stroke-width="6"/>
-<path id="LINE blue DEA to BFP" d="M2644 861L2644 682" stroke="#0066FF" stroke-width="6"/>
-<path id="LINE blue WATER TANK" d="M2642.35 498.315L2711.67 428.999L2789.67 428.999" stroke="#0066FF" stroke-width="6"/>
+<path id="LINE blue DEA to BFP" d="M2644 682L2644 861" stroke="#0066FF" stroke-width="6"/>
+<path id="LINE blue WATER TANK" d="M2789.67 428.999L2711.67 428.999L2642.35 498.315" stroke="#0066FF" stroke-width="6"/>
 <path id="PETIR" d="M2662.36 2075.47L2646.34 2168.59L2671.81 2165.93L2628.9 2261.87L2652.66 2174.33L2631.61 2176.53L2662.36 2075.47Z" fill="url(#paint5_linear_1874_211)"/>
 <rect x="525" y="2038" width="1034" height="159" rx="79.5" fill="#3A3A3A" stroke="#777777" stroke-width="10" stroke-linecap="round" stroke-dasharray="25 25"/>
 <g id="CHIMNEY">
