@@ -68,11 +68,12 @@ footer { background: var(--panel); border-top: 1px solid var(--border); padding:
 }
 
 
-/* 2. PROTEKSI: Kotak dan Lingkaran dilarang ikut bergerak */
-/* Tambahkan [stroke] di belakangnya agar posisinya menang dari animasi jalur */
-rect[stroke], circle[stroke], ellipse[stroke], polygon[stroke] {
-    animation: none !important;
-    stroke-dasharray: none !important;
+/* =======================================================
+   ANIMASI PIPA (TIDAK ADA LAGI FLOW-REVERSE)
+   ======================================================= */
+svg rect[stroke], svg circle[stroke], svg ellipse[stroke], svg polygon[stroke] { 
+    animation: none !important; 
+    stroke-dasharray: none !important; 
 }
 
 /* Menyatukan semua target elemen berdasarkan ID Grup dan Warna menjadi satu aliran Forward Natural */
