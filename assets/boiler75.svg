@@ -24,10 +24,8 @@
             <ellipse id="Ellipse 179" cx="3357" cy="699.5" rx="24" ry="22.5" fill="#6D6D6D"/>
         </g>
 
-        <g id="TRAVELLING GRATE">
-            <text fill="#D2D2D2" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="834.125" y="2139.43">TRAVELLING GRATE</tspan></text>
-            <rect x="525" y="2038" width="1034" height="159" rx="79.5" fill="#3A3A3A" stroke="#777777" stroke-width="10" stroke-linecap="round" stroke-dasharray="25 25"/>
-        </g>
+        <text id="TRAVELLING GRATE" fill="#D2D2D2" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="834.125" y="2139.43">TRAVELLING GRATE</tspan></text>
+        <rect x="525" y="2038" width="1034" height="159" rx="79.5" fill="#3A3A3A" stroke="#777777" stroke-width="10" stroke-linecap="round" stroke-dasharray="25 25"/>
 
         <g id="STEAM DRUM">
             <circle id="eqp SD" cx="561" cy="341" r="187.5" fill="url(#paint0_linear_1874_211)" stroke="#5EB1BF" stroke-width="3"/>
