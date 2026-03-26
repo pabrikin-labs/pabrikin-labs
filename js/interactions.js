@@ -92,7 +92,7 @@ function initializeSVGFeatures(svg) {
     if (popup && typeof equipInfo !== 'undefined') {
         svg.querySelectorAll('*').forEach(el => {
             const id = (el.getAttribute('id') || '').toUpperCase();
-            if (!id || id.startsWith('LINE') || el.tagName === 'g' || el.tagName === 'defs') return;
+            if (!id || id.startsWith('LINE') || el.tagName === 'defs') return;
 
             let key = Object.keys(equipInfo).find(k => id.includes(k) || (el.textContent && el.textContent.toUpperCase().includes(k)));
             if (key) {
