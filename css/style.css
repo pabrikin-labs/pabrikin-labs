@@ -111,7 +111,7 @@ svg [stroke="#75EA83"], svg [stroke="#90EAE6"] {
 @keyframes smokeRise { 
     0% { transform: translateY(0) scale(0.6); opacity: 0; } 
     20% { opacity: 0.7; } 
-    100% { transform: translateY(-800px) scale(3.5); opacity: 0; } 
+    100% { transform: translateY(-500px) scale(3); opacity: 0; } 
 }
 
 .fan-spin { 
