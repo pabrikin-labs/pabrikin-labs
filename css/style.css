@@ -37,7 +37,7 @@ header { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 10
 .dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1; overflow-y: auto; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
 .stat-card { background: var(--panel); border: 1px solid var(--border); padding: 20px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; }
 .stat-label { font-size: 0.75rem; color: var(--text-dim); font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
-.stat-value { font-family: 'Rajdhani'; font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1; }
+.stat-value { font-family: 'Rajdhani'; font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1; transition: all 0.5s ease-in-out;}
 .stat-unit { font-size: 1rem; color: var(--accent-blue); font-weight: 400; }
 .stat-trend { font-size: 0.8rem; margin-top: 10px; font-family: 'Share Tech Mono'; }
 .trend.positive { color: var(--accent-green); }

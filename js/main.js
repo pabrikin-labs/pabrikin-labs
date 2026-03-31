@@ -68,11 +68,25 @@ function initFilters() {
 
 // Simulasi Data Real-time untuk Dashboard General
 function updateDashboardMetrics() {
-    const values = document.querySelectorAll('.stat-value');
-    if (values.length > 0) {
-        // Hanya simulasi pergerakan angka kecil agar dashboard terasa "hidup"
-        const steamVal = (72 + Math.random() * 0.8).toFixed(1);
-        values[0].innerHTML = `${steamVal} <span class="stat-unit">TPH</span>`;
+    // Kita ambil semua elemen yang memiliki class stat-value
+    const statValues = document.querySelectorAll('.stat-value');
+    
+    if (statValues.length >= 4) {
+        // 1. Steam Production (TPH) - Fluktuasi di sekitar 72
+        const steamVal = (72 + Math.random() * 1.5).toFixed(1);
+        statValues[0].innerHTML = `${steamVal} <span class="stat-unit">TPH</span>`;
+
+        // 2. Efficiency (%) - Fluktuasi di sekitar 84
+        const effVal = (84 + Math.random() * 0.5).toFixed(1);
+        statValues[1].innerHTML = `${effVal} <span class="stat-unit">%</span>`;
+
+        // 3. Fuel Consumption (Tons/h) - Fluktuasi di sekitar 12
+        const fuelVal = (12.5 + Math.random() * 0.6).toFixed(1);
+        statValues[2].innerHTML = `${fuelVal} <span class="stat-unit">Tons/h</span>`;
+
+        // 4. Power Demand (MW) - Fluktuasi di sekitar 4
+        const powerVal = (4.1 + Math.random() * 0.3).toFixed(1);
+        statValues[3].innerHTML = `${powerVal} <span class="stat-unit">MW</span>`;
     }
 }
 
@@ -88,4 +102,9 @@ window.addEventListener('load', () => {
     loadSVG('assets/boiler75.svg', 'diagram-stoker');
     loadSVG('assets/distribution.svg', 'diagram-distribution');
     initFilters();
+    // Pastikan fungsi dipanggil pertama kali
+    updateDashboardMetrics();
+    
+    // Set interval sedikit lebih cepat (misal 3 detik) agar efeknya terasa
+    setInterval(updateDashboardMetrics, 3000);
 });
