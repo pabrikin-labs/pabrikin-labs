@@ -163,13 +163,13 @@ svg [stroke="#75EA83"], svg [stroke="#90EAE6"] {
 .footer-link {
   color: var(--accent-blue);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   transition: all 0.3s ease;
   border-bottom: 1px dashed transparent;
 }
 
 .footer-link:hover {
   color: #fff;
-  text-shadow: 0 0 8px var(--accent-blue);
+  text-shadow: 0 0 4px var(--accent-blue);
   border-bottom: 1px dashed var(--accent-blue);
 }
