@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Utility Systems</title>
+<title>Utilities Dashboard</title>
 <link rel="icon" type="image/svg+xml" href="assets/logo-pabrikin.svg">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,22 +12,82 @@
 <header>
   <div class="header-title">
     <span class="logo-wrapper" id="logo-place"></span>
-    UTILITY SYSTEMS DASHBOARD
+    Utilities Dashboard
   </div>
 
   <nav class="nav-menu">
-    <div class="nav-item active" onclick="switchPage(this, 'general')">General</div>
+    <div class="nav-item active" onclick="switchPage(this, 'overview')">Overview</div>
     <div class="nav-item" onclick="switchPage(this, 'boiler')">Boiler</div>
-    <div class="nav-item" onclick="switchPage(this, 'power')">Power</div>
     <div class="nav-item" onclick="switchPage(this, 'distribution')">Distribution</div>
   </nav>
 </header>
 
 <div class="main-content">
-  <section id="page-general" class="page-section active">
-    <div class="page-title">General Overview</div>
-    <div class="placeholder-card">
-      Content in development...
+  <section id="page-overview" class="page-section active">
+    <div class="page-title">PLANT OVERVIEW</div>
+    
+    <div class="dashboard-grid">
+      <!-- KPI CARDS -->
+      <div class="stat-card">
+        <div class="stat-label">TOTAL STEAM PRODUCTION</div>
+        <div class="stat-value">72.4 <span class="stat-unit">TPH</span></div>
+        <div class="stat-trend positive">↑ 2.4% vs last hour</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">OVERALL EFFICIENCY</div>
+        <div class="stat-value">84.2 <span class="stat-unit">%</span></div>
+        <div class="stat-trend">Stable</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">FUEL CONSUMPTION</div>
+        <div class="stat-value">12.8 <span class="stat-unit">TPH</span></div>
+        <div class="stat-trend negative">↑ 0.5% (High CV Coal)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">POWER DEMAND</div>
+        <div class="stat-value">4.2 <span class="stat-unit">MW</span></div>
+        <div class="stat-trend positive">↓ 1.2% (Optimized)</div>
+      </div>
+
+      <!-- SYSTEM STATUS LIST -->
+      <div class="dashboard-panel span-2">
+        <div class="panel-header">Area Health Status</div>
+        <div class="status-row">
+          <span>Stoker Boiler 75 TPH</span>
+          <span class="status-tag status-ok">RUNNING</span>
+        </div>
+        <div class="status-row">
+          <span>Water Treatment Plant</span>
+          <span class="status-tag status-ok">NORMAL</span>
+        </div>
+        <div class="status-row">
+          <span>Steam Distribution Grid</span>
+          <span class="status-tag status-warn">PRESSURE LOW AT FRACT</span>
+        </div>
+        <div class="status-row">
+          <span>Coal Handling System</span>
+          <span class="status-tag status-ok">OPERATIONAL</span>
+        </div>
+      </div>
+
+      <!-- ALARM LOG -->
+      <div class="dashboard-panel span-2">
+        <div class="panel-header">Recent Alarms</div>
+        <div class="alarm-list">
+          <div class="alarm-item warn">
+            <span class="alarm-time">11:42</span>
+            <span class="alarm-desc">Economizer Outlet Temp High (> 230°C)</span>
+          </div>
+          <div class="alarm-item info">
+            <span class="alarm-time">11:30</span>
+            <span class="alarm-desc">Feedwater Pump B switched to Manual</span>
+          </div>
+          <div class="alarm-item crit">
+            <span class="alarm-time">10:15</span>
+            <span class="alarm-desc">ID Fan vibration detected at Bearing M2</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -78,11 +138,6 @@
     </div>
   </section>
 
-  <section id="page-power" class="page-section">
-    <div class="page-title">Power Generation</div>
-    <div class="placeholder-card">Content in development...</div>
-  </section>
-
   <section id="page-distribution" class="page-section">
     <div class="page-title">Distribution System</div>
     
@@ -108,7 +163,7 @@
     <span id="live-clock">00:00:00</span>
   </div>
   <div class="footer-copyright">
-    © 2026 PABRIKIN LABS
+    © 2026 Pabrikin Labs
   </div>
 </footer>
 

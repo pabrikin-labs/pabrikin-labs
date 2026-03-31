@@ -32,6 +32,39 @@ header { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 10
 .main-content { flex: 1; padding: 15px 40px; width: 100%; display: flex; flex-direction: column; overflow: hidden; }
 .page-section { display: none; width: 100%; height: 100%; }
 .page-section.active { display: flex; flex-direction: column; }
+
+/* DASHBOARD GRID (Halaman General) */
+.dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1; overflow-y: auto; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.stat-card { background: var(--panel); border: 1px solid var(--border); padding: 20px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; }
+.stat-label { font-size: 0.75rem; color: var(--text-dim); font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+.stat-value { font-family: 'Rajdhani'; font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1; }
+.stat-unit { font-size: 1rem; color: var(--accent-blue); font-weight: 400; }
+.stat-trend { font-size: 0.8rem; margin-top: 10px; font-family: 'Share Tech Mono'; }
+.trend.positive { color: var(--accent-green); }
+.trend.negative { color: var(--accent-red); }
+
+.dashboard-panel { background: var(--panel2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.span-2 { grid-column: span 2; }
+.panel-header { font-family: 'Rajdhani'; font-weight: 700; color: var(--accent-cyan); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+
+.status-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.status-tag { padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; font-family: 'Share Tech Mono'; }
+.status-ok { background: rgba(34, 197, 94, 0.15); color: var(--accent-green); border: 1px solid var(--accent-green); }
+.status-warn { background: rgba(250, 204, 21, 0.15); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); }
+
+.alarm-list { display: flex; flex-direction: column; gap: 10px; }
+.alarm-item { display: flex; gap: 15px; padding: 10px; border-radius: 6px; font-size: 0.85rem; border-left: 4px solid #ccc; background: rgba(255,255,255,0.03); }
+.alarm-item.crit { border-color: var(--accent-red); color: #fda4af; }
+.alarm-item.warn { border-color: var(--accent-yellow); }
+.alarm-item.info { border-color: var(--accent-blue); }
+.alarm-time { font-family: 'Share Tech Mono'; opacity: 0.6; }
+
+/* DIAGRAM UI */
+.diagram-wrapper { position: relative; background: #0A0D14; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; flex: 1; width: 100%; display: none; align-items: center; justify-content: center; cursor: grab; user-select: none; }
+.diagram-wrapper.active { display: flex; }
+.diagram-wrapper svg { display: block; width: 100%; height: 100%; object-fit: contain; overflow: visible !important; }
+
+
 .sub-nav { display: flex; gap: 10px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--accent-blue) transparent; }
 .sub-nav::-webkit-scrollbar { height: 4px; }
 .sub-nav::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 10px; }

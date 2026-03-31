@@ -66,6 +66,16 @@ function initFilters() {
     });
 }
 
+// Simulasi Data Real-time untuk Dashboard General
+function updateDashboardMetrics() {
+    const values = document.querySelectorAll('.stat-value');
+    if (values.length > 0) {
+        // Hanya simulasi pergerakan angka kecil agar dashboard terasa "hidup"
+        const steamVal = (72 + Math.random() * 0.8).toFixed(1);
+        values[0].innerHTML = `${steamVal} <span class="stat-unit">TPH</span>`;
+    }
+}
+
 function updateClock() {
     const now = new Date();
     document.getElementById('live-clock').innerText = now.toLocaleTimeString('id-ID', { hour12: false });
