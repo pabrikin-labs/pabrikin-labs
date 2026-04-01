@@ -110,8 +110,75 @@
             <div class="diagram-wrapper" id="diagram-distribution" style="position: absolute; inset: 0; display: none;">
                 <div class="placeholder-card">Loading Distribution Diagram...</div>
             </div>
+            <div class="zoom-controls">
+    <button type="button" class="zoom-btn" data-action="zoom-in" title="Zoom In">+</button>
+    <button type="button" class="zoom-btn" data-action="zoom-out" title="Zoom Out">−</button>
+    <button type="button" class="zoom-btn" data-action="reset" title="Reset Zoom">⟲</button>
+</div>
         </div>
+
+    <!-- =========================================================
+     SECTION : PHYSICS SIMULATION PORTFOLIO
+     ========================================================= -->
+<div class="portfolio-physics-section" style="margin-top: 60px;">
+    <div class="page-title">
+        Portofolio: Physics Simulation
     </div>
+
+    <p style="max-width: 900px; color: var(--text-dim); margin-bottom: 25px;">
+        Interactive physics simulations designed to support high school (SMA) learning.
+        This section focuses on visualizing physical phenomena through animated diagrams
+        and real-time calculations to enhance conceptual understanding.
+    </p>
+
+    <!-- SIMULATION GRID -->
+    <div class="physics-grid">
+
+        <!-- SIMULATION CARD -->
+        <div class="physics-card">
+            <div class="physics-canvas-placeholder">
+                [ Motion Simulation Canvas ]
+            </div>
+            <h3>Uniform Linear Motion (GLB)</h3>
+            <p>
+                Visualizes constant velocity motion.
+                Students can adjust speed and observe position–time relationships.
+            </p>
+            <div class="physics-formula">
+                v = s / t
+            </div>
+        </div>
+
+        <div class="physics-card">
+            <div class="physics-canvas-placeholder">
+                [ Accelerated Motion Canvas ]
+            </div>
+            <h3>Uniformly Accelerated Motion (GLBB)</h3>
+            <p>
+                Demonstrates acceleration effects on displacement and velocity
+                using animated trajectories and live calculations.
+            </p>
+            <div class="physics-formula">
+                s = v₀t + ½at²
+            </div>
+        </div>
+
+        <div class="physics-card">
+            <div class="physics-canvas-placeholder">
+                [ Energy Diagram Canvas ]
+            </div>
+            <h3>Mechanical Energy</h3>
+            <p>
+                Illustrates the conversion between kinetic and potential energy
+                in a closed system.
+            </p>
+            <div class="physics-formula">
+                Ek + Ep = constant
+            </div>
+        </div>
+
+    </div>
+</div>
   </section>
 
   <!-- SECTION: ABOUT US -->
@@ -153,7 +220,7 @@
 </div>
 
 <script src="js/main.js"></script>
-<script src="js/zoom.js"></script>
+<!-- <script src="js/zoom.js"></script> -->
 <script src="js/interactions.js"></script>
 </body>
 </html>

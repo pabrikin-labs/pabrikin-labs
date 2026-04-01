@@ -5,27 +5,24 @@ function attachInteractions(wrapper) {
     if (wrapper.dataset.interacted) return;
     wrapper.dataset.interacted = 'true';
 
-    let scale = 1, posX = 0, posY = 0, startX = 0, startY = 0;
+    let scale = 1;
+    let posX = 0;
+    let posY = 0;
+    let startX = 0;
+    let startY = 0;
     let isDragging = false;
 
-    const apply = () => {
+    const applyTransform = () => {
         const svg = wrapper.querySelector('svg');
-        if (svg) svg.style.transform = `translate3d(${posX}px, ${posY}px, 0) scale(${scale})`;
+        if (svg) {
+            svg.style.transform =
+                `translate3d(${posX}px, ${posY}px, 0) scale(${scale})`;
+        }
     };
 
-    // Desktop Mouse Scroll
-    wrapper.onwheel = (e) => {
-        e.preventDefault();
-        const xs = (e.clientX - posX) / scale;
-        const ys = (e.clientY - posY) / scale;
-        scale *= (e.deltaY > 0) ? 0.9 : 1.1;
-        scale = Math.min(Math.max(0.1, scale), 15);
-        posX = e.clientX - xs * scale;
-        posY = e.clientY - ys * scale;
-        apply();
-    };
-
-    // Desktop Pan Drag
+    /* ============================
+       PAN (DRAG WITH MOUSE)
+       ============================ */
     wrapper.onmousedown = (e) => {
         if (e.button !== 0) return;
         isDragging = true;
@@ -34,45 +31,37 @@ function attachInteractions(wrapper) {
         wrapper.style.cursor = 'grabbing';
     };
 
-    // Mobile Integration Pan&Zoom
-    let initialDist = null;
-    let initialScale = 1;
-
-    wrapper.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 1) {
-            isDragging = true;
-            startX = e.touches[0].clientX - posX;
-            startY = e.touches[0].clientY - posY;
-        } else if (e.touches.length === 2) {
-            isDragging = false;
-            initialDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-            initialScale = scale;
-        }
-    }, {passive: false});
-
-    wrapper.addEventListener('touchmove', (e) => {
-        e.preventDefault(); 
-        if (isDragging && e.touches.length === 1) {
-            posX = e.touches[0].clientX - startX;
-            posY = e.touches[0].clientY - startY;
-            apply();
-        } else if (e.touches.length === 2 && initialDist) {
-            const currentDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-            scale = Math.min(Math.max(0.1, initialScale * (currentDist / initialDist)), 15);
-            apply();
-        }
-    }, {passive: false});
-
-    const endDrag = () => { isDragging = false; initialDist = null; wrapper.style.cursor = 'grab'; };
     window.addEventListener('mousemove', (e) => {
-        if (isDragging) { posX = e.clientX - startX; posY = e.clientY - startY; apply(); }
+        if (!isDragging) return;
+        posX = e.clientX - startX;
+        posY = e.clientY - startY;
+        applyTransform();
     });
-    window.addEventListener('mouseup', endDrag);
-    wrapper.addEventListener('touchend', endDrag);
-    wrapper.addEventListener('mouseleave', endDrag);
 
-    // Wrapper Reset
-    wrapper.resetZoom = () => { scale = 1; posX = 0; posY = 0; apply(); };
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+        wrapper.style.cursor = 'grab';
+    });
+
+    /* ============================
+       ZOOM API (BUTTON ONLY)
+       ============================ */
+    wrapper.zoomIn = () => {
+        scale = Math.min(scale * 1.2, 15);
+        applyTransform();
+    };
+
+    wrapper.zoomOut = () => {
+        scale = Math.max(scale / 1.2, 0.2);
+        applyTransform();
+    };
+
+    wrapper.resetZoom = () => {
+        scale = 1;
+        posX = 0;
+        posY = 0;
+        applyTransform();
+    };
 }
 
 
@@ -134,7 +123,10 @@ window.addEventListener('load', () => {
 });
 
 window.resetZoom = () => {
-    const activeWrapper = document.querySelector('.diagram-wrapper.active');
-    if (activeWrapper && activeWrapper.resetZoom) activeWrapper.resetZoom();
+    const wrapper = document.querySelector('.diagram-wrapper.active');
+    if (wrapper && typeof wrapper.resetZoom === 'function') {
+        wrapper.resetZoom();
+    }
 };
+
 window.initBoilerInteractions = () => {};

@@ -1,20 +1,78 @@
-// Equipment Information
 const equipInfo = {
-  'FURNACE': { title: 'FURNACE', body: 'Ruang bakar utama suhu tinggi (~700 °C) tempat terjadinya konversi energi batubara menjadi panas. Perpindahan panas dominan terjadi melalui radiasi.' },
-  'BOTTOM ASH': { title: 'BOTTOM ASH', body: 'Abu berat sisa pembakaran yang jatuh ke bagian bawah boiler untuk selanjutnya dibuang sebagai limbah.' },
-  'FLY ASH': { title: 'FLY ASH', body: 'Abu halus yang terbawa aliran gas buang menuju ESP.' },
-  'ESP': { title: 'ELECTROSTATIC PRECIPITATOR (ESP)', body: 'Alat penangkap debu halus menggunakan medan listrik statis (anoda dan katoda) bertegangan tinggi.' },
-  'COAL FEEDER': { title: 'COAL FEEDER', body: 'Pengatur laju aliran batubara sesuai dengan kebutuhan atau beban boiler.' },
-  'TRAVELLING GRATE': { title: 'TRAVELLING GRATE', body: 'Lantai pembakaran berjalan yang membawa batubara hingga terbakar sempurna.' },
-  'FD FAN': { title: 'FORCED DRAFT FAN (FDF)', body: 'Kipas peniup udara pembakaran.' },
-  'ID FAN': { title: 'INDUCED DRAFT FAN (IDF)', body: 'Kipas penghisap gas buang menuju cerobong (chimney).' },
-  'BFP': { title: 'BOILER FEED PUMP (BFP)', body: 'Pompa air pengisi boiler dengan tekanan tinggi.' },
-  'AIR HEATER': { title: 'AIR PREHEATER (APH)', body: 'Pemanas udara pembakaran sebelum masuk ke furnace dengan menggunakan sisa panas gas buang.' },
-  'STEAM DRUM': { title: 'STEAM DRUM', body: 'Bejana pemisah antara uap jenuh dan air boiler.' },
-  'SUPERHEATER': { title: 'SUPERHEATER (SH)', body: 'Pemanas steam lanjut menjadi steam kering untuk suplai ke steam turbine.' },
-  'ECONOMIZER': { title: 'ECONOMIZER', body: 'Pemanas awal air umpan boiler memanfaatkan temperatur gas buang yang masih tinggi.' },
-  'DEAERATOR': { title: 'DEAERATOR', body: 'Pembuang gas terlarut dalam air, seperti O2 & CO2, untuk mencegah korosi.' },
-  'WATER TANK': { title: 'DEMIN WATER TANK', body: 'Sumber air demineral sebagai air umpan boiler.' }
+  'FURNACE': {
+    title: 'FURNACE',
+    body: 'Main high-temperature combustion chamber (~700–1,200 °C) where coal chemical energy is converted into thermal energy. Heat transfer is predominantly through radiation to the waterwall tubes. Combustion stability, excess air ratio, and residence time strongly affect furnace efficiency and emissions.'
+  },
+
+  'BOTTOM ASH': {
+    title: 'BOTTOM ASH',
+    body: 'Coarse ash residue from coal combustion that settles at the bottom of the boiler. It is typically discharged through a water-sealed hopper to prevent air ingress. Bottom ash accounts for approximately 15–25% of total ash produced, depending on coal characteristics.'
+  },
+
+  'FLY ASH': {
+    title: 'FLY ASH',
+    body: 'Fine ash particles entrained in the flue gas stream leaving the furnace. Fly ash typically constitutes 75–85% of total ash content. The particle size and concentration significantly influence ESP performance and stack emissions.'
+  },
+
+  'ESP': {
+    title: 'ELECTROSTATIC PRECIPITATOR (ESP)',
+    body: 'Equipment used to remove fine particulate matter from flue gas using high-voltage electrostatic fields between anode and cathode. Charging electrodes ionize particles, which are then collected on plates. Typical collection efficiency exceeds 99% under optimal operating conditions.'
+  },
+
+  'COAL FEEDER': {
+    title: 'COAL FEEDER',
+    body: 'Controls and regulates the coal feed rate supplied to the furnace according to boiler load demand. It ensures stable combustion by maintaining a consistent mass flow. Feed rate accuracy directly impacts furnace pressure, steam generation, and emissions.'
+  },
+
+  'TRAVELLING GRATE': {
+    title: 'TRAVELLING GRATE',
+    body: 'Moving combustion grate that transports coal through various combustion zones including drying, ignition, and burnout. Grate speed is adjusted to ensure complete combustion before ash discharge. Proper grate operation prevents clinker formation and uneven burning.'
+  },
+
+  'FD FAN': {
+    title: 'FORCED DRAFT FAN (FDF)',
+    body: 'Supplies combustion air into the furnace at the required flow rate and pressure. Primary and secondary air distribution is critical for flame stability and combustion efficiency. FDF capacity typically varies with boiler load and excess air setting.'
+  },
+
+  'ID FAN': {
+    title: 'INDUCED DRAFT FAN (IDF)',
+    body: 'Extracts flue gas from the boiler and directs it toward the stack (chimney). It maintains negative pressure inside the furnace to prevent flue gas leakage. ID fan operation directly affects draft balance and overall boiler stability.'
+  },
+
+  'BFP': {
+    title: 'BOILER FEED PUMP (BFP)',
+    body: 'High-pressure pump that supplies feedwater to the boiler against drum pressure. It ensures continuous water circulation through economizer, drum, and waterwall tubes. Typically driven by electric motor or turbine, depending on plant design.'
+  },
+
+  'AIR HEATER': {
+    title: 'AIR PREHEATER (APH)',
+    body: 'Preheats combustion air by recovering residual heat from flue gas. This process improves boiler efficiency and reduces fuel consumption. Outlet air temperature is closely monitored to avoid cold-end corrosion.'
+  },
+
+  'STEAM DRUM': {
+    title: 'STEAM DRUM',
+    body: 'Pressure vessel that separates saturated steam from boiler water. It provides steam storage and stabilizes water level during load fluctuations. Proper drum level control is critical to avoid carryover or tube overheating.'
+  },
+
+  'SUPERHEATER': {
+    title: 'SUPERHEATER (SH)',
+    body: 'Raises saturated steam temperature into superheated steam prior to turbine admission. Superheating improves turbine efficiency and reduces moisture erosion on blades. Steam temperature is controlled using attemperators or gas flow adjustment.'
+  },
+
+  'ECONOMIZER': {
+    title: 'ECONOMIZER',
+    body: 'Preheats boiler feedwater using high-temperature flue gas before entering the steam drum. This reduces fuel consumption and thermal stress on boiler components. Economizer performance is influenced by flue gas temperature and fouling condition.'
+  },
+
+  'DEAERATOR': {
+    title: 'DEAERATOR',
+    body: 'Removes dissolved gases such as oxygen (O₂) and carbon dioxide (CO₂) from feedwater. Typical oxygen concentration after deaeration is below 7 ppb. Effective deaeration minimizes corrosion in boiler tubes and feedwater systems.'
+  },
+
+  'WATER TANK': {
+    title: 'DEMINERALIZED WATER TANK',
+    body: 'Storage tank providing demineralized water for boiler feed and makeup requirements. The water has very low conductivity and silica content to prevent scaling. Tank capacity is designed to support continuous boiler operation during disturbances.'
+  }
 };
 
 async function loadSVG(url, containerId) {
@@ -122,4 +180,28 @@ window.addEventListener('load', () => {
     updateDashboardMetrics();
     
     setInterval(updateDashboardMetrics, 3000);
+});
+
+// =============================================
+// GLOBAL ZOOM BUTTON HANDLER
+// =============================================
+window.addEventListener('click', (e) => {
+    const btn = e.target.closest('.zoom-btn');
+    if (!btn) return;
+
+    const action = btn.dataset.action;
+    const wrapper = document.querySelector('.diagram-wrapper.active');
+    if (!wrapper) return;
+
+    if (action === 'zoom-in' && typeof wrapper.zoomIn === 'function') {
+        wrapper.zoomIn();
+    }
+
+    if (action === 'zoom-out' && typeof wrapper.zoomOut === 'function') {
+        wrapper.zoomOut();
+    }
+
+    if (action === 'reset' && typeof wrapper.resetZoom === 'function') {
+        wrapper.resetZoom();
+    }
 });
