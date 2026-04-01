@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,8 @@
 <body>
 
 <header>
-  <div class="header-title">
-    <span class="logo-wrapper" id="logo-place"></span>
+  <div class="header-title" onclick="switchPage(this, 'home')">
+    <span class="logo-wrapper" id="logo-place" onclick="switchPage(this, 'home')"></span>
     Pabrikin Labs
   </div>
 
@@ -25,10 +25,10 @@
 <div class="main-content">
   <!-- SECTION: HOME (Dikosongkan sesuai permintaan) -->
   <section id="page-home" class="page-section active">
-    <div class="page-title">Selamat Datang di Pabrikin Labs</div>
+    <div class="page-title">Welcome to Pabrikin Labs</div>
     <div class="placeholder-card">
       <h3>Future of Industrial Solutions</h3>
-      <p style="margin-top: 10px; opacity: 0.7;">Halaman utama sedang dalam pengembangan konten marketing.</p>
+      <p style="margin-top: 10px; opacity: 0.7;">Main page content is under development.</p>
     </div>
   </section>
 
@@ -43,14 +43,14 @@
                 <div class="project-img-placeholder">[Foto Instalasi Boiler]</div>
                 <div class="project-info">
                     <h3>Boiler Installation 75 TPH</h3>
-                    <p>Pemasangan sistem stoker boiler lengkap di Cilegon, Banten.</p>
+                    <p>Complete stoker boiler system installation in Cilegon, Banten.</p>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-img-placeholder">[Foto Jalur Perpipaan]</div>
                 <div class="project-info">
                     <h3>Steam Distribution Audit</h3>
-                    <p>Optimalisasi dan audit jalur distribusi uap industri.</p>
+                    <p>Optimization and audit of industrial steam distribution lines.</p>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
 
     <!-- 2. PORTOFOLIO / VISUALISASI (BAGIAN BAWAH) -->
     <div class="portfolio-visual-section">
-        <div class="page-title">Portofolio: System Visualization</div>
+        <div class="page-title">Portfolio: System Visualization</div>
         
         <!-- Dashboard Overview dipindah ke sini -->
         <div class="dashboard-grid" style="margin-bottom: 30px;">
@@ -83,6 +83,7 @@
         <div class="sub-nav">
             <div class="sub-item active" onclick="switchPortfolio(this, 'stoker')">Boiler System</div>
             <div class="sub-item" onclick="switchPortfolio(this, 'distribution')">Distribution Network</div>
+            <div class="sub-item" onclick="switchPortfolio(this, 'distillation')">Distillation Column</div>
         </div>
 
         <!-- Filter Panel Dinamis -->
@@ -100,6 +101,12 @@
                 <button class="filter-btn active" data-target="WATER_LINES" style="--color: #41B9B1;">Water</button>
                 <button class="filter-btn active" data-target="COMP_LINES" style="--color: #24742F;">Inst. Air</button>
             </div>
+            <!-- Filter Distillation -->
+            <div class="filter-panel diagram-filter" id="filter-distillation" style="display: none;">
+                <button class="filter-btn active" data-target="CRUDE_LINES" style="--color: #FFA500;">Crude Oil</button>
+                <button class="filter-btn active" data-target="VAPOR_LINES" style="--color: #FF4500;">Vapor</button>
+                <button class="filter-btn active" data-target="PRODUCT_LINES" style="--color: #FFD700;">Products</button>
+            </div>
         </div>
 
         <!-- Wadah Diagram -->
@@ -109,6 +116,9 @@
             </div>
             <div class="diagram-wrapper" id="diagram-distribution" style="position: absolute; inset: 0; display: none;">
                 <div class="placeholder-card">Loading Distribution Diagram...</div>
+            </div>
+            <div class="diagram-wrapper" id="diagram-distillation" style="position: absolute; inset: 0; display: none;">
+                <div class="placeholder-card">Loading Distillation Column Diagram...</div>
             </div>
             <div class="zoom-controls">
     <button type="button" class="zoom-btn" data-action="zoom-in" title="Zoom In">+</button>
@@ -122,7 +132,7 @@
      ========================================================= -->
 <div class="portfolio-physics-section" style="margin-top: 60px;">
     <div class="page-title">
-        Portofolio: Physics Simulation
+        Portfolio: Physics Simulation
     </div>
 
     <p style="max-width: 900px; color: var(--text-dim); margin-bottom: 25px;">
@@ -131,52 +141,11 @@
         and real-time calculations to enhance conceptual understanding.
     </p>
 
-    <!-- SIMULATION GRID -->
-    <div class="physics-grid">
-
-        <!-- SIMULATION CARD -->
-        <div class="physics-card">
-            <div class="physics-canvas-placeholder">
-                [ Motion Simulation Canvas ]
-            </div>
-            <h3>Uniform Linear Motion (GLB)</h3>
-            <p>
-                Visualizes constant velocity motion.
-                Students can adjust speed and observe position–time relationships.
-            </p>
-            <div class="physics-formula">
-                v = s / t
-            </div>
-        </div>
-
-        <div class="physics-card">
-            <div class="physics-canvas-placeholder">
-                [ Accelerated Motion Canvas ]
-            </div>
-            <h3>Uniformly Accelerated Motion (GLBB)</h3>
-            <p>
-                Demonstrates acceleration effects on displacement and velocity
-                using animated trajectories and live calculations.
-            </p>
-            <div class="physics-formula">
-                s = v₀t + ½at²
-            </div>
-        </div>
-
-        <div class="physics-card">
-            <div class="physics-canvas-placeholder">
-                [ Energy Diagram Canvas ]
-            </div>
-            <h3>Mechanical Energy</h3>
-            <p>
-                Illustrates the conversion between kinetic and potential energy
-                in a closed system.
-            </p>
-            <div class="physics-formula">
-                Ek + Ep = constant
-            </div>
-        </div>
-
+    <!-- GO TO PAGE BUTTON -->
+    <div style="text-align: center; margin-top: 30px;">
+        <button class="sim-btn" id="go-to-simulations" style="background: var(--accent-blue); color: #000; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 800; cursor: pointer; font-family: 'Rajdhani'; text-transform: uppercase; font-size: 1.1rem;">
+            GO TO PAGE
+        </button>
     </div>
 </div>
   </section>
@@ -187,17 +156,17 @@
     <div class="about-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px;">
         <div class="about-content">
             <h3>Pabrikin Labs</h3>
-            <p>Partner strategis manufaktur dan optimasi energi industrial.</p>
+            <p>Strategic partner for manufacturing and industrial energy optimization.</p>
             <div class="contact-box" style="margin-top: 20px; font-family: 'Share Tech Mono'; color: var(--accent-blue);">
                 <p>📍 Cilegon, Banten, Indonesia</p>
                 <p>📧 contact@pabrikin.com</p>
             </div>
         </div>
         <div class="contact-form" style="display: flex; flex-direction: column; gap: 15px;">
-            <input type="text" placeholder="Nama Lengkap" style="background: var(--panel); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 6px;">
-            <input type="email" placeholder="Email Perusahaan" style="background: var(--panel); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 6px;">
-            <textarea placeholder="Pesan Project" style="background: var(--panel); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 6px; height: 100px;"></textarea>
-            <button class="submit-btn" style="background: var(--accent-blue); color: #000; border: none; padding: 12px; border-radius: 6px; font-weight: 800; cursor: pointer;">KIRIM PESAN</button>
+            <input type="text" placeholder="Full Name" style="background: var(--panel); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 6px;">
+            <input type="email" placeholder="Company Email" style="background: var(--panel); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 6px;">
+            <textarea placeholder="Project Message" style="background: var(--panel); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 6px; height: 100px;"></textarea>
+            <button class="submit-btn" style="background: var(--accent-blue); color: #000; border: none; padding: 12px; border-radius: 6px; font-weight: 800; cursor: pointer;">SEND MESSAGE</button>
         </div>
     </div>
   </section>

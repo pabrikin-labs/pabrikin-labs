@@ -1,0 +1,49 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .line { stroke-width: 3; fill: none; }
+      .equipment { fill: #333; stroke: #666; stroke-width: 2; }
+      .text { fill: #fff; font-family: Arial; font-size: 12px; text-anchor: middle; }
+      .arrow { fill: #fff; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#000"/>
+
+  <!-- Distillation Column -->
+  <rect x="350" y="100" width="100" height="400" class="equipment" rx="10"/>
+  <text x="400" y="320" class="text">DISTILLATION</text>
+  <text x="400" y="340" class="text">COLUMN</text>
+
+  <!-- Feed Input -->
+  <line x1="200" y1="300" x2="350" y2="300" class="line" stroke="#FFA500" id="CRUDE_LINES"/>
+  <polygon points="340,295 350,300 340,305" class="arrow" fill="#FFA500"/>
+  <text x="150" y="295" class="text">CRUDE PALM OIL</text>
+
+  <!-- Vapor Output -->
+  <line x1="450" y1="200" x2="600" y2="200" class="line" stroke="#FF4500" id="VAPOR_LINES"/>
+  <polygon points="610,195 600,200 610,205" class="arrow" fill="#FF4500"/>
+  <text x="650" y="195" class="text">VAPOR</text>
+
+  <!-- Product Output -->
+  <line x1="450" y1="400" x2="600" y2="400" class="line" stroke="#FFD700" id="PRODUCT_LINES"/>
+  <polygon points="610,395 600,400 610,405" class="arrow" fill="#FFD700"/>
+  <text x="650" y="395" class="text">PRODUCTS</text>
+
+  <!-- Heat Input -->
+  <line x1="400" y1="50" x2="400" y2="100" class="line" stroke="#FF0000"/>
+  <polygon points="395,60 400,50 405,60" class="arrow" fill="#FF0000"/>
+  <text x="400" y="45" class="text">HEAT</text>
+
+  <!-- Condenser -->
+  <rect x="600" y="180" width="80" height="40" class="equipment"/>
+  <text x="640" y="200" class="text">CONDENSER</text>
+
+  <!-- Reboiler -->
+  <rect x="600" y="380" width="80" height="40" class="equipment"/>
+  <text x="640" y="400" class="text">REBOILER</text>
+
+  <!-- Title -->
+  <text x="400" y="30" class="text" style="font-size: 18px; font-weight: bold;">CRUDE PALM OIL DISTILLATION PROCESS</text>
+</svg>

@@ -72,6 +72,26 @@ const equipInfo = {
   'WATER TANK': {
     title: 'DEMINERALIZED WATER TANK',
     body: 'Storage tank providing demineralized water for boiler feed and makeup requirements. The water has very low conductivity and silica content to prevent scaling. Tank capacity is designed to support continuous boiler operation during disturbances.'
+  },
+
+  'DISTILLATION COLUMN': {
+    title: 'DISTILLATION COLUMN',
+    body: 'Vertical cylindrical vessel used for separating crude palm oil into different fractions based on boiling points. The column contains trays or packing material to facilitate vapor-liquid contact and mass transfer.'
+  },
+
+  'CONDENSER': {
+    title: 'CONDENSER',
+    body: 'Heat exchanger that cools and condenses vapor from the top of the distillation column back into liquid form. The condensate is typically returned to the column as reflux to improve separation efficiency.'
+  },
+
+  'REBOILER': {
+    title: 'REBOILER',
+    body: 'Heat exchanger located at the bottom of the distillation column that provides the necessary heat to vaporize the liquid mixture. It ensures continuous distillation by maintaining the required vapor flow rate.'
+  },
+
+  'CRUDE PALM OIL': {
+    title: 'CRUDE PALM OIL FEED',
+    body: 'Raw palm oil mixture containing various fatty acids and impurities that needs to be separated through distillation. The feed rate and temperature significantly affect the quality of the final products.'
   }
 };
 
@@ -81,7 +101,13 @@ async function loadSVG(url, containerId) {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const svgData = await response.text();
         const container = document.getElementById(containerId);
-        if (container) container.innerHTML = svgData;
+        if (container) {
+            container.innerHTML = svgData;
+            // Add click handler for logo
+            if (containerId === 'logo-place') {
+                container.onclick = function() { switchPage(this, 'home'); };
+            }
+        }
     } catch (error) {
         console.error("Gagal memuat SVG:", error);
     }
@@ -175,11 +201,41 @@ window.addEventListener('load', () => {
     loadSVG('assets/logo-pabrikin.svg', 'logo-place');
     loadSVG('assets/boiler75.svg', 'diagram-stoker');
     loadSVG('assets/distribution.svg', 'diagram-distribution');
+    loadSVG('assets/distillation.svg', 'diagram-distillation');
     initFilters();
     
     updateDashboardMetrics();
     
     setInterval(updateDashboardMetrics, 3000);
+
+    const glbCard = document.getElementById('card-glb');
+    if (glbCard) {
+        glbCard.addEventListener('click', () => {
+            window.location.href = 'glb.html';
+        });
+    }
+
+    const glbbCard = document.getElementById('card-glbb');
+    if (glbbCard) {
+        glbbCard.addEventListener('click', () => {
+            window.location.href = 'glbb.html';
+        });
+    }
+
+    const goToSimulationsBtn = document.getElementById('go-to-simulations');
+    if (goToSimulationsBtn) {
+        goToSimulationsBtn.addEventListener('click', () => {
+            window.location.href = 'physics-simulations.html';
+        });
+    }
+
+    // Handle URL hash for direct navigation to projects page
+    if (window.location.hash === '#projects') {
+        const projectsNav = document.querySelector('.nav-item[onclick*="projects"]');
+        if (projectsNav) {
+            switchPage(projectsNav, 'projects');
+        }
+    }
 });
 
 // =============================================

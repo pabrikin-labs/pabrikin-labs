@@ -21,7 +21,7 @@ svg text, svg tspan { font-family: 'Share Tech Mono', monospace !important; }
 
 header { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%); border-bottom: 2px solid var(--accent-blue); padding: 10px 40px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; z-index: 1000; box-shadow: 0 4px 40px rgba(56,189,248,0.15); gap: 15px; }
 .header-title { display: flex; align-items: center; gap: 12px; font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-blue); white-space: nowrap; }
-.logo-wrapper { display: inline-flex; align-items: center; justify-content: center; height: 1.8rem; }
+.logo-wrapper { display: inline-flex; align-items: center; justify-content: center; height: 1.8rem; cursor: pointer; }
 .logo-wrapper svg { height: 100%; width: auto; }
 
 .nav-menu { display: flex; gap: 5px; background: rgba(0,0,0,0.3); padding: 5px; border-radius: 8px; border: 1px solid var(--border); }
