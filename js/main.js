@@ -198,10 +198,10 @@ setInterval(updateClock, 1000);
 
 window.addEventListener('load', () => {
     updateClock();
-    loadSVG('assets/logo-pabrikin.svg', 'logo-place');
-    loadSVG('assets/boiler75.svg', 'diagram-stoker');
-    loadSVG('assets/distribution.svg', 'diagram-distribution');
-    loadSVG('assets/distillation.svg', 'diagram-distillation');
+    loadSVG('assets/images/logo-pabrikin.svg', 'logo-place');
+    loadSVG('assets/diagrams/boiler75.svg', 'diagram-stoker');
+    loadSVG('assets/diagrams/distribution.svg', 'diagram-distribution');
+    loadSVG('assets/diagrams/distillation.svg', 'diagram-distillation');
     initFilters();
     
     updateDashboardMetrics();
@@ -225,12 +225,12 @@ window.addEventListener('load', () => {
     const goToSimulationsBtn = document.getElementById('go-to-simulations');
     if (goToSimulationsBtn) {
         goToSimulationsBtn.addEventListener('click', () => {
-            window.location.href = 'physics-simulations.html';
+            window.location.href = 'simulations/physics-simulations.html';
         });
     }
 
     // Handle URL hash for direct navigation to projects page
-    if (window.location.hash === '#projects') {
+    if (window.location.hash === '#projects' || window.location.hash === '#page-projects') {
         const projectsNav = document.querySelector('.nav-item[onclick*="projects"]');
         if (projectsNav) {
             switchPage(projectsNav, 'projects');
