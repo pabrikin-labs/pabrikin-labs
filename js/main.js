@@ -46,7 +46,7 @@ function initScrollAnimations() {
 // Load SVG logo
 function loadLogo() {
   // Determine correct path based on current page location
-  const isInSubfolder = window.location.pathname.includes('/simulations/') || window.location.pathname.includes('/boiler-system.html') || window.location.pathname.includes('/distribution-network.html');
+  const isInSubfolder = window.location.pathname.includes('/section-projects/') || window.location.pathname.includes('/boiler-system.html') || window.location.pathname.includes('/distribution-network.html');
   const logoPath = isInSubfolder ? '../assets/images/logo-pabrikin.svg' : 'assets/images/logo-pabrikin.svg';
   
   fetch(logoPath)
@@ -126,24 +126,10 @@ function initThemeToggle() {
 }
 
 window.addEventListener('load', () => {
-    const glbCard = document.getElementById('card-glb');
-    if (glbCard) {
-        glbCard.addEventListener('click', () => {
-            window.location.href = 'glb.html';
-        });
-    }
-
-    const glbbCard = document.getElementById('card-glbb');
-    if (glbbCard) {
-        glbbCard.addEventListener('click', () => {
-            window.location.href = 'glbb.html';
-        });
-    }
-
     const goToSimulationsBtn = document.getElementById('go-to-simulations');
     if (goToSimulationsBtn) {
         goToSimulationsBtn.addEventListener('click', () => {
-            window.location.href = 'simulations/physics-simulations.html';
+            window.location.href = 'section-projects/physics-simulations.html';
         });
     }
 

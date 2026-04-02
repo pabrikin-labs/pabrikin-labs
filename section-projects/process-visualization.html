@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pabrikin Labs | Process Visualization</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         :root {
             --zoom-scale-boiler: 1;
@@ -302,7 +302,7 @@
 <body>
     <header>
         <div class="header-title" style="cursor: default;">
-            <span class="logo-wrapper" id="logo-place" onclick="window.location.href='index.html'">
+            <span class="logo-wrapper" id="logo-place" onclick="window.location.href='../index.html'">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="height: 100%; width: auto; color: var(--text);"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             </span>
             Process Visualization
@@ -825,14 +825,14 @@
         // Load SVGs when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
-                loadSVGInline('boiler-diagram', './assets/diagrams/boiler75.svg');
-                loadSVGInline('distribution-diagram', './assets/diagrams/distribution.svg');
-                loadSVGInline('distillation-diagram', './assets/diagrams/distillation.svg');
+                loadSVGInline('boiler-diagram', '../assets/diagrams/boiler75.svg');
+                loadSVGInline('distribution-diagram', '../assets/diagrams/distribution.svg');
+                loadSVGInline('distillation-diagram', '../assets/diagrams/distillation.svg');
             });
         } else {
-            loadSVGInline('boiler-diagram', './assets/diagrams/boiler75.svg');
-            loadSVGInline('distribution-diagram', './assets/diagrams/distribution.svg');
-            loadSVGInline('distillation-diagram', './assets/diagrams/distillation.svg');
+            loadSVGInline('boiler-diagram', '../assets/diagrams/boiler75.svg');
+            loadSVGInline('distribution-diagram', '../assets/diagrams/distribution.svg');
+            loadSVGInline('distillation-diagram', '../assets/diagrams/distillation.svg');
         }
     </script>
   <script src="../js/main.js"></script>

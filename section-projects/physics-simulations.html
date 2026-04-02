@@ -236,6 +236,72 @@
       border-radius: 50%;
       cursor: pointer;
     }
+    
+    /* Diagram & Stats Styles */
+    .boiler-diagram, .network-diagram {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      padding: 10px;
+    }
+    .boiler-diagram svg, .network-diagram svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .network-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .stat-card {
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+    }
+    .stat-card h4 {
+      color: var(--accent-cyan);
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+    }
+    .stat-card .value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--diagram-steam);
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .diagram-description {
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--panel2);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .diagram-description h3 {
+      color: var(--accent-cyan);
+      margin-bottom: 15px;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+    }
+    .diagram-description p {
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .diagram-description ul {
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-left: 20px;
+    }
   </style>
 </head>
 <body>
@@ -500,6 +566,244 @@
 
         <div class="result-display" id="shm-result">
           Period: 0 s | Angular Frequency: 0 rad/s | Max Velocity: 0 m/s
+        </div>
+      </div>
+
+      <!-- BOILER SYSTEM DIAGRAM SECTION -->
+      <div class="simulation-section" id="boiler-diagram-section">
+        <h2>7. Industrial Boiler System Diagram</h2>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">
+          A detailed breakdown of an industrial boiler system's components and heat exchange process.
+        </p>
+        
+        <div class="boiler-diagram">
+          <svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="900" height="500" fill="var(--bg)" stroke="var(--border)" stroke-width="1" rx="8"/>
+
+            <!-- Boiler Body -->
+            <rect x="350" y="150" width="200" height="250" fill="var(--diagram-power)" stroke="var(--text)" stroke-width="2" rx="10"/>
+            <text x="450" y="280" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="14" font-weight="bold">BOILER</text>
+
+            <!-- Water Input -->
+            <line x1="300" y1="350" x2="350" y2="350" stroke="var(--diagram-water)" stroke-width="4" marker-end="url(#arrow)"/>
+            <text x="280" y="345" text-anchor="end" fill="var(--text)" font-family="var(--font-text)" font-size="12">Water In</text>
+            <circle cx="320" cy="350" r="8" fill="var(--diagram-water)"/>
+            <text x="320" y="355" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="10">H₂O</text>
+
+            <!-- Fuel Input -->
+            <line x1="400" y1="420" x2="400" y2="400" stroke="var(--diagram-crude)" stroke-width="4" marker-end="url(#arrow)"/>
+            <text x="380" y="435" text-anchor="end" fill="var(--text)" font-family="var(--font-text)" font-size="12">Fuel</text>
+            <rect x="390" y="405" width="20" height="15" fill="var(--diagram-crude)" stroke="var(--text)" stroke-width="1"/>
+            <text x="400" y="415" text-anchor="middle" fill="var(--diagram-crude)" font-family="var(--font-diagram)" font-size="8">FUEL</text>
+
+            <!-- Air Input -->
+            <line x1="500" y1="420" x2="500" y2="400" stroke="var(--diagram-air)" stroke-width="4" marker-end="url(#arrow)"/>
+            <text x="520" y="435" text-anchor="start" fill="var(--text)" font-family="var(--font-text)" font-size="12">Air</text>
+            <circle cx="500" cy="405" r="8" fill="var(--diagram-air)"/>
+            <text x="500" y="410" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">O₂</text>
+
+            <!-- Steam Output -->
+            <line x1="550" y1="250" x2="650" y2="250" stroke="var(--diagram-steam)" stroke-width="6" marker-end="url(#arrow)"/>
+            <text x="670" y="245" text-anchor="start" fill="var(--text)" font-family="var(--font-text)" font-size="12">Steam Out</text>
+            <circle cx="620" cy="250" r="12" fill="var(--diagram-steam)"/>
+            <text x="620" y="255" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="10">STEAM</text>
+
+            <!-- Burner -->
+            <rect x="430" y="380" width="40" height="20" fill="var(--diagram-glow)" stroke="var(--text)" stroke-width="1" rx="5"/>
+            <text x="450" y="392" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">BURNER</text>
+
+            <!-- Heat Exchange Arrows -->
+            <path d="M 420 160 Q 420 140 440 140 Q 460 140 460 160" fill="none" stroke="var(--diagram-glow)" stroke-width="3" marker-end="url(#arrow)"/>
+            <path d="M 480 160 Q 480 140 460 140 Q 440 140 440 160" fill="none" stroke="var(--diagram-glow)" stroke-width="3" marker-end="url(#arrow)"/>
+            <text x="450" y="130" text-anchor="middle" fill="var(--diagram-glow)" font-family="var(--font-diagram)" font-size="10">HEAT</text>
+
+            <!-- Temperature Indicators -->
+            <rect x="320" y="120" width="60" height="20" fill="var(--panel)" stroke="var(--border)" stroke-width="1" rx="3"/>
+            <text x="350" y="132" text-anchor="middle" fill="var(--text)" font-family="var(--font-diagram)" font-size="10">800°C</text>
+
+            <rect x="520" y="120" width="60" height="20" fill="var(--panel)" stroke="var(--border)" stroke-width="1" rx="3"/>
+            <text x="550" y="132" text-anchor="middle" fill="var(--text)" font-family="var(--font-diagram)" font-size="10">200°C</text>
+
+            <!-- Control Panel -->
+            <rect x="100" y="100" width="150" height="80" fill="var(--panel)" stroke="var(--border)" stroke-width="2" rx="5"/>
+            <text x="175" y="125" text-anchor="middle" fill="var(--text)" font-family="var(--font-text)" font-size="12" font-weight="bold">CONTROL PANEL</text>
+            <text x="175" y="145" text-anchor="middle" fill="var(--text-dim)" font-family="var(--font-diagram)" font-size="10">Pressure: 10 bar</text>
+            <text x="175" y="160" text-anchor="middle" fill="var(--text-dim)" font-family="var(--font-diagram)" font-size="10">Temp: 180°C</text>
+
+            <!-- Safety Valve -->
+            <circle cx="450" cy="130" r="15" fill="var(--diagram-power)" stroke="var(--text)" stroke-width="2"/>
+            <text x="450" y="135" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">SAFETY</text>
+
+            <!-- Arrows and markers -->
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L0,6 L9,3 z" fill="context-stroke"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="diagram-description">
+          <h3>Boiler System Components</h3>
+          <p>The industrial boiler system converts water into steam through controlled combustion. Fuel (typically natural gas, oil, or coal) is burned in the burner, heating water in the boiler tubes. The resulting steam is used for various industrial processes including heating, power generation, and manufacturing operations.</p>
+          <p><strong>Key Components:</strong></p>
+          <ul>
+            <li><strong>Boiler Body:</strong> Main pressure vessel containing water and steam</li>
+            <li><strong>Burner:</strong> Fuel combustion system with air supply</li>
+            <li><strong>Heat Exchanger:</strong> Transfers thermal energy to water</li>
+            <li><strong>Control Panel:</strong> Monitors pressure, temperature, and safety systems</li>
+            <li><strong>Safety Valve:</strong> Prevents overpressure conditions</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEAM DISTRIBUTION NETWORK SECTION -->
+      <div class="simulation-section">
+        <h2>8. Steam Distribution Network Diagram</h2>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">
+          Overview of high-pressure steam distribution to multiple industrial processes.
+        </p>
+
+        <div class="network-diagram">
+          <svg width="1100" height="600" viewBox="0 0 1100 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="1100" height="600" fill="var(--bg)" stroke="var(--border)" stroke-width="1" rx="8"/>
+
+            <!-- Main Boiler -->
+            <rect x="50" y="250" width="80" height="100" fill="var(--diagram-power)" stroke="var(--text)" stroke-width="2" rx="8"/>
+            <text x="90" y="295" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="10" font-weight="bold">BOILER</text>
+            <text x="90" y="310" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">10 bar</text>
+
+            <!-- Main Steam Line -->
+            <line x1="130" y1="300" x2="300" y2="300" stroke="var(--diagram-steam)" stroke-width="8"/>
+            <circle cx="215" cy="300" r="15" fill="var(--diagram-steam)"/>
+            <text x="215" y="305" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">STEAM</text>
+
+            <!-- Distribution Headers -->
+            <line x1="300" y1="300" x2="400" y2="300" stroke="var(--diagram-steam)" stroke-width="6"/>
+            <line x1="400" y1="300" x2="400" y2="200" stroke="var(--diagram-steam)" stroke-width="6"/>
+            <line x1="400" y1="300" x2="400" y2="400" stroke="var(--diagram-steam)" stroke-width="6"/>
+
+            <!-- Process 1 -->
+            <rect x="450" y="150" width="100" height="60" fill="var(--diagram-products)" stroke="var(--text)" stroke-width="2" rx="5"/>
+            <text x="500" y="175" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="10" font-weight="bold">PROCESS 1</text>
+            <text x="500" y="190" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">Heating</text>
+            <line x1="400" y1="200" x2="450" y2="180" stroke="var(--diagram-steam)" stroke-width="4"/>
+            <line x1="550" y1="180" x2="600" y2="180" stroke="var(--diagram-water)" stroke-width="4"/>
+            <circle cx="575" cy="180" r="8" fill="var(--diagram-water)"/>
+            <text x="575" y="185" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="6">COND</text>
+
+            <!-- Process 2 -->
+            <rect x="450" y="270" width="100" height="60" fill="var(--diagram-products)" stroke="var(--text)" stroke-width="2" rx="5"/>
+            <text x="500" y="295" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="10" font-weight="bold">PROCESS 2</text>
+            <text x="500" y="310" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">Power Gen</text>
+            <line x1="400" y1="300" x2="450" y2="300" stroke="var(--diagram-steam)" stroke-width="4"/>
+            <line x1="550" y1="300" x2="600" y2="300" stroke="var(--diagram-water)" stroke-width="4"/>
+            <circle cx="575" cy="300" r="8" fill="var(--diagram-water)"/>
+            <text x="575" y="305" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="6">COND</text>
+
+            <!-- Process 3 -->
+            <rect x="450" y="350" width="100" height="60" fill="var(--diagram-products)" stroke="var(--text)" stroke-width="2" rx="5"/>
+            <text x="500" y="375" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="10" font-weight="bold">PROCESS 3</text>
+            <text x="500" y="390" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">Drying</text>
+            <line x1="400" y1="400" x2="450" y2="380" stroke="var(--diagram-steam)" stroke-width="4"/>
+            <line x1="550" y1="380" x2="600" y2="380" stroke="var(--diagram-water)" stroke-width="4"/>
+            <circle cx="575" cy="380" r="8" fill="var(--diagram-water)"/>
+            <text x="575" y="385" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="6">COND</text>
+
+            <!-- Condensate Return -->
+            <line x1="600" y1="180" x2="700" y2="180" stroke="var(--diagram-water)" stroke-width="4"/>
+            <line x1="600" y1="300" x2="700" y2="300" stroke="var(--diagram-water)" stroke-width="4"/>
+            <line x1="600" y1="380" x2="700" y2="380" stroke="var(--diagram-water)" stroke-width="4"/>
+            <line x1="700" y1="180" x2="700" y2="380" stroke="var(--diagram-water)" stroke-width="4"/>
+            <line x1="700" y1="280" x2="800" y2="280" stroke="var(--diagram-water)" stroke-width="4"/>
+            <circle cx="750" cy="280" r="12" fill="var(--diagram-water)"/>
+            <text x="750" y="285" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">COND</text>
+            <text x="750" y="295" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">RETURN</text>
+
+            <!-- Boiler Feedwater -->
+            <line x1="800" y1="280" x2="900" y2="280" stroke="var(--diagram-water)" stroke-width="6"/>
+            <circle cx="850" cy="280" r="15" fill="var(--diagram-water)"/>
+            <text x="850" y="285" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">FEED</text>
+            <text x="850" y="295" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">WATER</text>
+            <line x1="950" y1="280" x2="1000" y2="300" stroke="var(--diagram-water)" stroke-width="6"/>
+            <line x1="1000" y1="300" x2="1000" y2="320" stroke="var(--diagram-water)" stroke-width="6"/>
+            <line x1="1000" y1="320" x2="130" y2="320" stroke="var(--diagram-water)" stroke-width="6"/>
+            <line x1="130" y1="320" x2="50" y2="320" stroke="var(--diagram-water)" stroke-width="6"/>
+            <circle cx="90" cy="320" r="8" fill="var(--diagram-water)"/>
+            <text x="90" y="325" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="6">IN</text>
+
+            <!-- Control Valves -->
+            <circle cx="350" cy="300" r="10" fill="var(--diagram-glow)" stroke="var(--text)" stroke-width="1"/>
+            <text x="350" y="305" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="6">V1</text>
+
+            <circle cx="400" cy="220" r="8" fill="var(--diagram-glow)" stroke="var(--text)" stroke-width="1"/>
+            <text x="400" y="225" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="6">V2</text>
+
+            <circle cx="400" cy="380" r="8" fill="var(--diagram-glow)" stroke="var(--text)" stroke-width="1"/>
+            <text x="400" y="385" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="6">V3</text>
+
+            <!-- Pressure Indicators -->
+            <rect x="320" y="270" width="40" height="15" fill="var(--panel)" stroke="var(--border)" stroke-width="1" rx="2"/>
+            <text x="340" y="280" text-anchor="middle" fill="var(--text)" font-family="var(--font-diagram)" font-size="8">8 bar</text>
+
+            <rect x="420" y="170" width="40" height="15" fill="var(--panel)" stroke="var(--border)" stroke-width="1" rx="2"/>
+            <text x="440" y="180" text-anchor="middle" fill="var(--text)" font-family="var(--font-diagram)" font-size="8">6 bar</text>
+
+            <!-- Flow Meters -->
+            <rect x="650" y="170" width="30" height="20" fill="var(--diagram-blue)" stroke="var(--text)" stroke-width="1" rx="2"/>
+            <text x="665" y="180" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="6">FM</text>
+
+            <rect x="650" y="290" width="30" height="20" fill="var(--diagram-blue)" stroke="var(--text)" stroke-width="1" rx="2"/>
+            <text x="665" y="300" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="6">FM</text>
+
+            <!-- Arrows and markers -->
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L0,6 L9,3 z" fill="context-stroke"/>
+              </marker>
+            </defs>
+
+            <!-- Flow Direction Arrows -->
+            <line x1="160" y1="295" x2="180" y2="295" stroke="var(--diagram-steam)" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="250" y1="295" x2="270" y2="295" stroke="var(--diagram-steam)" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="720" y1="275" x2="740" y2="275" stroke="var(--diagram-water)" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="880" y1="275" x2="900" y2="275" stroke="var(--diagram-water)" stroke-width="2" marker-end="url(#arrow)"/>
+          </svg>
+        </div>
+
+        <div class="network-stats">
+          <div class="stat-card">
+            <h4>Steam Pressure</h4>
+            <div class="value">10 bar</div>
+          </div>
+          <div class="stat-card">
+            <h4>Steam Flow Rate</h4>
+            <div class="value">500 kg/h</div>
+          </div>
+          <div class="stat-card">
+            <h4>Process Efficiency</h4>
+            <div class="value">85%</div>
+          </div>
+          <div class="stat-card">
+            <h4>Energy Recovery</h4>
+            <div class="value">92%</div>
+          </div>
+        </div>
+
+        <div class="diagram-description">
+          <h3>Steam Distribution Network Overview</h3>
+          <p>The steam distribution network efficiently delivers high-pressure steam from the central boiler to multiple industrial processes. The system includes pressure control valves, flow meters, and condensate recovery to maximize energy efficiency and minimize waste.</p>
+          <p><strong>Key Components:</strong></p>
+          <ul>
+            <li><strong>Main Header:</strong> Primary steam distribution line from boiler</li>
+            <li><strong>Control Valves:</strong> Regulate steam flow and pressure to each process</li>
+            <li><strong>Flow Meters:</strong> Monitor steam consumption and efficiency</li>
+            <li><strong>Condensate Return:</strong> Recover and recycle condensed steam back to boiler</li>
+            <li><strong>Process Connections:</strong> Individual steam supplies for heating, power, and drying</li>
+          </ul>
+          <p><strong>Benefits:</strong> Reduced energy costs, improved process control, enhanced safety, and sustainable steam utilization across the facility.</p>
         </div>
       </div>
     </div>
