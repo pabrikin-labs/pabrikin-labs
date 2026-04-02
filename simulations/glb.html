@@ -3,55 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GLB Simulation | Pabrikin Labs</title>
+  <title>Boiler System | Pabrikin Labs</title>
   <link rel="icon" type="image/svg+xml" href="../assets/images/logo-pabrikin.svg">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .sim-container { max-width: 820px; margin: 40px auto; padding: 20px; background: #0f172a; border: 1px solid var(--border); border-radius: 12px; }
-    .sim-row { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
-    .sim-row label { width: 120px; color: var(--text-dim); font-family: 'Share Tech Mono'; }
-    .sim-row input { flex: 1; background: var(--panel); border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 6px; }
-    .sim-result { margin-top: 18px; font-family: 'Rajdhani'; font-size: 1.3rem; color: var(--accent-yellow); }
-    .btn-back { all: unset; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; background: var(--accent-blue); color: #000; padding: 10px 16px; border-radius: 8px; font-weight: 700; margin-bottom: 18px; }
+    .diagram-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .diagram-title {
+      text-align: center;
+      font-family: var(--font-text);
+      font-size: 2rem;
+      color: var(--text);
+      margin-bottom: 30px;
+    }
+    .boiler-diagram {
+      width: 100%;
+      height: 600px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-back {
+      all: unset;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--diagram-power);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .diagram-description {
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--panel);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .diagram-description h3 {
+      color: var(--text);
+      margin-bottom: 15px;
+    }
+    .diagram-description p {
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-title">
-      <span class="logo-wrapper" id="logo-place"></span>
-      GLB Simulation
+    <div class="header-title" onclick="window.location.href='../index.html'">
+      <span class="logo-wrapper" id="logo-place" onclick="window.location.href='../index.html'"></span>
+      Pabrikin Labs
     </div>
   </header>
 
   <main class="main-content" style="padding: 25px 40px;">
-    <div class="sim-container">
-      <button class="btn-back" onclick="window.location.href='../index.html#page-projects'">← Back</button>
-      <h2 class="page-title" style="margin-top:0;">GLB - Uniform Linear Motion</h2>
-      <p style="color: var(--text-dim);">Enter velocity and time to calculate displacement (s = v × t).</p>
+    <div class="diagram-container">
 
-      <div class="sim-row">
-        <label>Velocity (m/s)</label>
-        <input id="input-v" type="number" min="0" step="0.1" value="5">
+      <h1 class="diagram-title">Industrial Boiler System Diagram</h1>
+
+      <div class="boiler-diagram">
+        <svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="900" height="500" fill="var(--bg)" stroke="var(--border)" stroke-width="1" rx="8"/>
+
+          <!-- Boiler Body -->
+          <rect x="350" y="150" width="200" height="250" fill="var(--diagram-power)" stroke="var(--text)" stroke-width="2" rx="10"/>
+          <text x="450" y="280" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="14" font-weight="bold">BOILER</text>
+
+          <!-- Water Input -->
+          <line x1="300" y1="350" x2="350" y2="350" stroke="var(--diagram-water)" stroke-width="4" marker-end="url(#arrow)"/>
+          <text x="280" y="345" text-anchor="end" fill="var(--text)" font-family="var(--font-text)" font-size="12">Water In</text>
+          <circle cx="320" cy="350" r="8" fill="var(--diagram-water)"/>
+          <text x="320" y="355" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="10">H₂O</text>
+
+          <!-- Fuel Input -->
+          <line x1="400" y1="420" x2="400" y2="400" stroke="var(--diagram-crude)" stroke-width="4" marker-end="url(#arrow)"/>
+          <text x="380" y="435" text-anchor="end" fill="var(--text)" font-family="var(--font-text)" font-size="12">Fuel</text>
+          <rect x="390" y="405" width="20" height="15" fill="var(--diagram-crude)" stroke="var(--text)" stroke-width="1"/>
+          <text x="400" y="415" text-anchor="middle" fill="var(--diagram-crude)" font-family="var(--font-diagram)" font-size="8">FUEL</text>
+
+          <!-- Air Input -->
+          <line x1="500" y1="420" x2="500" y2="400" stroke="var(--diagram-air)" stroke-width="4" marker-end="url(#arrow)"/>
+          <text x="520" y="435" text-anchor="start" fill="var(--text)" font-family="var(--font-text)" font-size="12">Air</text>
+          <circle cx="500" cy="405" r="8" fill="var(--diagram-air)"/>
+          <text x="500" y="410" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">O₂</text>
+
+          <!-- Steam Output -->
+          <line x1="550" y1="250" x2="650" y2="250" stroke="var(--diagram-steam)" stroke-width="6" marker-end="url(#arrow)"/>
+          <text x="670" y="245" text-anchor="start" fill="var(--text)" font-family="var(--font-text)" font-size="12">Steam Out</text>
+          <circle cx="620" cy="250" r="12" fill="var(--diagram-steam)"/>
+          <text x="620" y="255" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="10">STEAM</text>
+
+          <!-- Burner -->
+          <rect x="430" y="380" width="40" height="20" fill="var(--diagram-glow)" stroke="var(--text)" stroke-width="1" rx="5"/>
+          <text x="450" y="392" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">BURNER</text>
+
+          <!-- Heat Exchange Arrows -->
+          <path d="M 420 160 Q 420 140 440 140 Q 460 140 460 160" fill="none" stroke="var(--diagram-glow)" stroke-width="3" marker-end="url(#arrow)"/>
+          <path d="M 480 160 Q 480 140 460 140 Q 440 140 440 160" fill="none" stroke="var(--diagram-glow)" stroke-width="3" marker-end="url(#arrow)"/>
+          <text x="450" y="130" text-anchor="middle" fill="var(--diagram-glow)" font-family="var(--font-diagram)" font-size="10">HEAT</text>
+
+          <!-- Temperature Indicators -->
+          <rect x="320" y="120" width="60" height="20" fill="var(--panel)" stroke="var(--border)" stroke-width="1" rx="3"/>
+          <text x="350" y="132" text-anchor="middle" fill="var(--text)" font-family="var(--font-diagram)" font-size="10">800°C</text>
+
+          <rect x="520" y="120" width="60" height="20" fill="var(--panel)" stroke="var(--border)" stroke-width="1" rx="3"/>
+          <text x="550" y="132" text-anchor="middle" fill="var(--text)" font-family="var(--font-diagram)" font-size="10">200°C</text>
+
+          <!-- Control Panel -->
+          <rect x="100" y="100" width="150" height="80" fill="var(--panel)" stroke="var(--border)" stroke-width="2" rx="5"/>
+          <text x="175" y="125" text-anchor="middle" fill="var(--text)" font-family="var(--font-text)" font-size="12" font-weight="bold">CONTROL PANEL</text>
+          <text x="175" y="145" text-anchor="middle" fill="var(--text-dim)" font-family="var(--font-diagram)" font-size="10">Pressure: 10 bar</text>
+          <text x="175" y="160" text-anchor="middle" fill="var(--text-dim)" font-family="var(--font-diagram)" font-size="10">Temp: 180°C</text>
+
+          <!-- Safety Valve -->
+          <circle cx="450" cy="130" r="15" fill="var(--diagram-power)" stroke="var(--text)" stroke-width="2"/>
+          <text x="450" y="135" text-anchor="middle" fill="white" font-family="var(--font-diagram)" font-size="8">SAFETY</text>
+
+          <!-- Arrows and markers -->
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z" fill="context-stroke"/>
+            </marker>
+          </defs>
+        </svg>
       </div>
 
-      <div class="sim-row">
-        <label>Time (s)</label>
-        <input id="input-t" type="number" min="0" step="0.1" value="10">
+      <div class="diagram-description">
+        <h3>Boiler System Components</h3>
+        <p>The industrial boiler system converts water into steam through controlled combustion. Fuel (typically natural gas, oil, or coal) is burned in the burner, heating water in the boiler tubes. The resulting steam is used for various industrial processes including heating, power generation, and manufacturing operations.</p>
+        <p><strong>Key Components:</strong></p>
+        <ul>
+          <li><strong>Boiler Body:</strong> Main pressure vessel containing water and steam</li>
+          <li><strong>Burner:</strong> Fuel combustion system with air supply</li>
+          <li><strong>Heat Exchanger:</strong> Transfers thermal energy to water</li>
+          <li><strong>Control Panel:</strong> Monitors pressure, temperature, and safety systems</li>
+          <li><strong>Safety Valve:</strong> Prevents overpressure conditions</li>
+        </ul>
       </div>
-
-      <button class="btn-back" id="btn-calc" style="background: var(--accent-green); margin-top: 5px;">Calculate Displacement</button>
-
-      <div class="sim-result" id="sim-result">Displacement: 0 m</div>
     </div>
   </main>
 
   <script>
-    document.getElementById('btn-calc').addEventListener('click', () => {
-      const v = parseFloat(document.getElementById('input-v').value) || 0;
-      const t = parseFloat(document.getElementById('input-t').value) || 0;
-      const s = (v * t).toFixed(2);
-      document.getElementById('sim-result').innerText = `Displacement: ${s} m`;
-    });
+    // Load logo
+    fetch('../assets/images/logo-pabrikin.svg')
+      .then(response => response.text())
+      .then(svg => {
+        document.getElementById('logo-place').innerHTML = svg;
+      })
+      .catch(() => {
+        document.getElementById('logo-place').innerHTML = '⚡';
+      });
   </script>
 </body>
 </html>

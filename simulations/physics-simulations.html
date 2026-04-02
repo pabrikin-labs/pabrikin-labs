@@ -23,8 +23,7 @@
     .simulation-section h2 {
       color: var(--accent-blue);
       margin-bottom: 15px;
-      font-family: 'Rajdhani';
-      text-transform: uppercase;
+      font-family: var(--font-text);
     }
     .simulation-section .formula-display {
       background: var(--panel2);
@@ -32,7 +31,8 @@
       border-radius: 8px;
       padding: 15px;
       margin-bottom: 20px;
-      font-family: 'Share Tech Mono';
+      font-family: var(--font-formula);
+      font-style: italic;
       color: var(--accent-yellow);
       text-align: center;
       font-size: 1.2rem;
@@ -49,24 +49,23 @@
       gap: 5px;
     }
     .input-field label {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-text);
       color: var(--accent-cyan);
       font-size: 0.9rem;
-      text-transform: uppercase;
     }
     .input-field input {
-      background: #0f172a;
+      background: var(--color-dark-bg);
       border: 1px solid var(--border);
       padding: 10px;
-      color: #fff;
+      color: var(--color-white);
       border-radius: 6px;
-      font-family: 'Share Tech Mono';
+      font-family: var(--font-diagram);
       width: 120px;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
     .input-field input:focus {
       border-color: var(--accent-blue);
-      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+      box-shadow: 0 0 0 2px var(--color-overlay-blue-xlight);
       outline: none;
     }
     .sim-btn {
@@ -77,18 +76,17 @@
       border-radius: 6px;
       font-weight: 800;
       cursor: pointer;
-      font-family: 'Rajdhani';
-      text-transform: uppercase;
+      font-family: var(--font-text);
       margin-bottom: 20px;
       transition: all 0.3s ease;
     }
     .sim-btn:hover {
-      background: #60a5fa;
+      background: var(--accent-cyan);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+      box-shadow: 0 4px 12px var(--color-overlay-blue-heavy);
     }
     .canvas-container {
-      background: #000;
+      background: var(--color-black);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 20px;
@@ -108,10 +106,9 @@
       padding: 20px;
     }
     .graph-card h4 {
-      font-family: 'Rajdhani';
+      font-family: var(--font-text);
       color: var(--accent-yellow);
       margin-bottom: 10px;
-      text-transform: uppercase;
     }
     .result-display {
       background: var(--panel2);
@@ -119,14 +116,14 @@
       border-radius: 8px;
       padding: 15px;
       margin-top: 15px;
-      font-family: 'Share Tech Mono';
+      font-family: var(--font-diagram);
       color: var(--accent-green);
       text-align: center;
       font-size: 1.1rem;
       transition: all 0.3s ease;
     }
     .result-display:hover {
-      background: rgba(34, 197, 94, 0.1);
+      background: var(--color-overlay-green);
       border-color: var(--accent-green);
     }
     .back-btn {
@@ -136,8 +133,7 @@
       padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
-      font-family: 'Rajdhani';
-      text-transform: uppercase;
+      font-family: var(--font-text);
       margin-top: 20px;
     }
     .back-btn:hover {
@@ -145,7 +141,7 @@
     }
     /* New Simulations Styles */
     .projectile-canvas {
-      background: linear-gradient(to bottom, #87ceeb 0%, #ffffff 100%);
+      background: linear-gradient(to bottom, #87ceeb 0%, var(--color-white) 100%);
       border-radius: 8px;
     }
     .doppler-container {
@@ -157,13 +153,13 @@
     .doppler-source {
       width: 20px;
       height: 20px;
-      background: #ff4444;
+      background: var(--accent-red);
       border-radius: 50%;
       position: relative;
     }
     .wave-circle {
       position: absolute;
-      border: 2px solid rgba(255, 68, 68, 0.3);
+      border: 2px solid var(--color-overlay-red);
       border-radius: 50%;
       animation: waveExpand 2s infinite ease-out;
     }
@@ -182,14 +178,14 @@
       position: absolute;
       width: 2px;
       height: 150px;
-      background: #38bdf8;
+      background: var(--accent-blue);
       transform-origin: top center;
       animation: swing 2s infinite ease-in-out;
     }
     .pendulum-ball {
       width: 20px;
       height: 20px;
-      background: #38bdf8;
+      background: var(--accent-blue);
       border-radius: 50%;
       position: absolute;
       bottom: 0;
@@ -212,8 +208,7 @@
       padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
-      font-family: 'Rajdhani';
-      text-transform: uppercase;
+      font-family: var(--font-text);
       font-size: 0.8rem;
     }
     .control-btn:hover {
@@ -241,13 +236,10 @@
 </head>
 <body>
   <header>
-    <div class="header-title">
-      <span class="logo-wrapper" id="logo-place"></span>
-      Pabrikin Labs - Physics Simulations
+    <div class="header-title" onclick="window.location.href='../index.html'">
+      <span class="logo-wrapper" id="logo-place" onclick="window.location.href='../index.html'"></span>
+      Pabrikin Labs
     </div>
-    <nav class="nav-menu">
-      <div class="nav-item" onclick="window.location.href='../index.html'">BACK TO PORTFOLIO</div>
-    </nav>
   </header>
 
   <div class="main-content">
@@ -522,6 +514,13 @@
 
   <script src="../js/main.js"></script>
   <script>
+    // Get CSS variables
+    const cssVars = {
+      accentBlue: getComputedStyle(document.documentElement).getPropertyValue('--accent-blue').trim(),
+      accentGreen: getComputedStyle(document.documentElement).getPropertyValue('--accent-green').trim(),
+      textDim: getComputedStyle(document.documentElement).getPropertyValue('--text-dim').trim(),
+      diagramGlow: getComputedStyle(document.documentElement).getPropertyValue('--diagram-glow').trim()
+    };
     // GLB Calculation
     document.getElementById('glb-calc').addEventListener('click', () => {
       const v = parseFloat(document.getElementById('glb-v').value) || 0;
@@ -557,8 +556,8 @@
         datasets: [{
           label: 'Position (m)',
           data: [],
-          borderColor: '#38bdf8',
-          backgroundColor: 'rgba(56, 189, 248, 0.1)',
+          borderColor: cssVars.accentBlue,
+          backgroundColor: cssVars.accentBlue + '1a',
           tension: 0.4
         }]
       },
@@ -578,8 +577,8 @@
         datasets: [{
           label: 'Velocity (m/s)',
           data: [],
-          borderColor: '#22c55e',
-          backgroundColor: 'rgba(34, 197, 94, 0.1)',
+          borderColor: cssVars.accentGreen,
+          backgroundColor: cssVars.accentGreen + '1a',
           tension: 0.4
         }]
       },
@@ -604,7 +603,7 @@
       glbbCtx.clearRect(0, 0, glbbCanvas.width, glbbCanvas.height);
 
       // Draw track
-      glbbCtx.strokeStyle = '#94a3b8';
+      glbbCtx.strokeStyle = cssVars.textDim;
       glbbCtx.lineWidth = 2;
       glbbCtx.beginPath();
       glbbCtx.moveTo(50, glbbCanvas.height / 2);
@@ -613,7 +612,7 @@
 
       // Draw object
       const objX = 50 + (x / 100) * (glbbCanvas.width - 100);
-      glbbCtx.fillStyle = '#38bdf8';
+      glbbCtx.fillStyle = cssVars.accentBlue;
       glbbCtx.beginPath();
       glbbCtx.arc(objX, glbbCanvas.height / 2, 10, 0, 2 * Math.PI);
       glbbCtx.fill();

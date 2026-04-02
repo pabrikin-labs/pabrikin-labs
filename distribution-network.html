@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribution Network Diagram - Pabrikin Labs</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --zoom-scale: 1;
+        }
+
+        .diagram-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            background: var(--bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .diagram-svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transform-origin: center;
+            transition: transform 0.3s ease;
+            transform: scale(var(--zoom-scale));
+        }
+
+        .zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .zoom-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--panel);
+            color: var(--text);
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .zoom-btn:hover {
+            background: var(--panel2);
+            transform: scale(1.05);
+        }
+
+        .zoom-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Animasi jalur mengalir */
+        .flowing-path {
+            stroke-dasharray: 20 10;
+            animation: flow 2s linear infinite;
+        }
+
+        @keyframes flow {
+            0% { stroke-dashoffset: 30; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .diagram-container-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .diagram-title {
+            text-align: left;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text);
+            margin: 30px 0 20px 0;
+            font-family: var(--font-text);
+        }
+
+        .diagram-description {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background: var(--panel);
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .diagram-description h2 {
+            color: var(--text);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-family: var(--font-text);
+        }
+
+        .diagram-description p {
+            color: var(--text-dim);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-family: var(--font-text);
+        }
+
+        .diagram-description ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .diagram-description li {
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 8px;
+            font-family: var(--font-text);
+        }
+
+        .utility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .utility-item {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .utility-item.steam { border-left-color: #FFF600; }
+        .utility-item.electric { border-left-color: #D63C3C; }
+        .utility-item.water { border-left-color: #41B9B1; }
+        .utility-item.air { border-left-color: #1EC435; }
+
+        .utility-item h3 {
+            color: var(--text);
+            margin-bottom: 10px;
+            font-family: var(--font-text);
+        }
+
+        .utility-item p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-family: var(--font-text);
+        }
+
+        @media (max-width: 768px) {
+            .diagram-title {
+                font-size: 2rem;
+                margin: 20px 0 15px 0;
+            }
+
+            .diagram-container {
+                height: 50vh;
+            }
+
+            .zoom-controls {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .zoom-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .diagram-description {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .utility-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title" onclick="window.location.href='index.html'">
+            <span class="logo-wrapper" id="logo-place" onclick="window.location.href='index.html'"></span>
+            Pabrikin Labs
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="diagram-container-wrapper">
+            <div class="page-title">Distribution Network Diagram</div>
+
+            <div class="diagram-container">
+                <object data="../assets/diagrams/distribution.svg" type="image/svg+xml" class="diagram-svg" id="distribution-diagram"></object>
+
+                <div class="zoom-controls">
+                    <button class="zoom-btn" onclick="zoomIn()">+</button>
+                    <button class="zoom-btn" onclick="resetZoom()">⟲</button>
+                    <button class="zoom-btn" onclick="zoomOut()">−</button>
+                </div>
+            </div>
+
+            <div class="diagram-description">
+                <h2>About Distribution Network</h2>
+                <p>The distribution network diagram illustrates the complex infrastructure required to deliver essential utilities across an industrial complex. This comprehensive system ensures that steam, electricity, water, and compressed air are efficiently distributed to various processing units within the facility.</p>
+
+                <h3>Processing Units:</h3>
+                <ul>
+                    <li><strong>General Plant:</strong> Central administrative and support facilities</li>
+                    <li><strong>Soap Noodle:</strong> Soap base manufacturing unit</li>
+                    <li><strong>Hydrogenation:</strong> Chemical processing for oil hardening</li>
+                    <li><strong>Splitting:</strong> Separation and purification processes</li>
+                    <li><strong>Utility:</strong> Central utility generation and distribution</li>
+                    <li><strong>FAME (Fatty Acid Methyl Ester):</strong> Biodiesel production unit</li>
+                    <li><strong>Fractionation:</strong> Separation of chemical components</li>
+                    <li><strong>Glycerine Refining:</strong> Purification of glycerine byproduct</li>
+                    <li><strong>Tank Farm:</strong> Storage facilities for raw materials and products</li>
+                </ul>
+
+                <h3>Utility Systems:</h3>
+                <div class="utility-grid">
+                    <div class="utility-item steam">
+                        <h3>Steam Distribution</h3>
+                        <p>High-pressure steam network supplying heat and power to all processing units. Yellow lines indicate steam flow paths from central boiler to various consumers.</p>
+                    </div>
+                    <div class="utility-item electric">
+                        <h3>Electrical Distribution</h3>
+                        <p>Power distribution system delivering electricity to motors, heaters, and control systems. Red lines show electrical supply routes throughout the facility.</p>
+                    </div>
+                    <div class="utility-item water">
+                        <h3>Water Distribution</h3>
+                        <p>Raw water supply and wastewater collection system. Blue lines represent water flow for process use, cooling, and effluent management.</p>
+                    </div>
+                    <div class="utility-item air">
+                        <h3>Compressed Air</h3>
+                        <p>Pneumatic system providing compressed air for instrumentation and process control. Green lines indicate air distribution network.</p>
+                    </div>
+                </div>
+
+                <h3>System Integration:</h3>
+                <p>This distribution network represents a typical integrated chemical processing facility where multiple production units share common utilities. The diagram demonstrates how utilities are generated centrally and distributed efficiently to minimize energy waste and ensure operational reliability across all plant sections.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Pabrikin Labs. All rights reserved.</p>
+            <div id="live-clock"></div>
+        </div>
+    </footer>
+
+    <script>
+        // Zoom functionality
+        let currentZoom = 1;
+        const minZoom = 0.5;
+        const maxZoom = 3;
+        const zoomStep = 0.25;
+
+        function updateZoom() {
+            document.documentElement.style.setProperty('--zoom-scale', currentZoom);
+        }
+
+        function zoomIn() {
+            if (currentZoom < maxZoom) {
+                currentZoom += zoomStep;
+                updateZoom();
+            }
+        }
+
+        function zoomOut() {
+            if (currentZoom > minZoom) {
+                currentZoom -= zoomStep;
+                updateZoom();
+            }
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            updateZoom();
+        }
+
+        // Mouse wheel zoom
+        document.addEventListener('wheel', function(e) {
+            if (e.ctrlKey) {
+                e.preventDefault();
+                if (e.deltaY < 0) {
+                    zoomIn();
+                } else {
+                    zoomOut();
+                }
+            }
+        });
+
+        // Live clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('live-clock').textContent = timeString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Add flowing animation to paths when SVG loads
+        document.getElementById('distribution-diagram').addEventListener('load', function() {
+            const svgDoc = this.contentDocument;
+            if (svgDoc) {
+                // Add flowing animation to all utility lines
+                const utilityLines = svgDoc.querySelectorAll('path[stroke="#FFF600"], path[stroke="#D63C3C"], path[stroke="#41B9B1"], path[stroke="#1EC435"]');
+                utilityLines.forEach(path => {
+                    path.classList.add('flowing-path');
+                });
+            }
+        });
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
