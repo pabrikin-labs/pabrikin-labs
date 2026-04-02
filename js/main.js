@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize contact form
   initContactForm();
+
+  // Initialize theme toggle
+  initThemeToggle();
 });
 
 // Scroll to section function
@@ -86,38 +89,43 @@ function initContactForm() {
   }
 }
 
-// Live clock functionality
-function updateClock() {
-  const clockElement = document.getElementById('live-clock');
-  if (clockElement) {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('en-US', {
-      hour12: false,
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    });
-    clockElement.textContent = timeString;
+// Initialize Theme Toggle Functionality
+function initThemeToggle() {
+  let toggleBtn = document.getElementById('theme-toggle');
+  
+  // Dynamically inject button if it doesn't exist in HTML
+  if (!toggleBtn) {
+    toggleBtn = document.createElement('button');
+    toggleBtn.id = 'theme-toggle';
+    toggleBtn.className = 'theme-toggle';
+    toggleBtn.setAttribute('aria-label', 'Toggle Dark Mode');
+    document.body.appendChild(toggleBtn);
   }
+
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  const sunIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+  const moonIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+  
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    toggleBtn.innerHTML = sunIcon;
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    toggleBtn.innerHTML = moonIcon;
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const newTheme = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    toggleBtn.innerHTML = isDark ? moonIcon : sunIcon;
+  });
 }
 
-// Update clock every second
-setInterval(updateClock, 1000);
-updateClock(); // Initial call
-setInterval(updateClock, 1000);
-
 window.addEventListener('load', () => {
-    updateClock();
-    loadSVG('assets/images/logo-pabrikin.svg', 'logo-place');
-    loadSVG('assets/diagrams/boiler75.svg', 'diagram-stoker');
-    loadSVG('assets/diagrams/distribution.svg', 'diagram-distribution');
-    loadSVG('assets/diagrams/distillation.svg', 'diagram-distillation');
-    initFilters();
-    
-    updateDashboardMetrics();
-    
-    setInterval(updateDashboardMetrics, 3000);
-
     const glbCard = document.getElementById('card-glb');
     if (glbCard) {
         glbCard.addEventListener('click', () => {

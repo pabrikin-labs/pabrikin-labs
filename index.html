@@ -10,7 +10,7 @@
 <body>
 
 <header>
-  <div class="header-title" onclick="scrollToSection('home')">
+  <div class="header-title" style="cursor: default;">
     <span class="logo-wrapper" id="logo-place" onclick="scrollToSection('home')"></span>
     Pabrikin Labs
   </div>
@@ -35,6 +35,17 @@
       <p class="section-description">Discover our comprehensive industrial solutions and innovative projects</p>
 
       <div class="projects-grid">
+
+        <div class="project-item" onclick="window.location.href='simulations/physics-simulations.html'">
+          <div class="project-image">
+            <img src="assets/images/project-cover-boiler-scale-model.jpg" alt="Boiler Model Scale" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNmOGY5ZmEiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmaWxsPSIjNmM3NTdkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Qm9pbGVyIE1vZGVsIFNjYWxlPC90ZXh0Pjwvc3ZnPg=='">
+          </div>
+          <div class="project-info">
+            <h3>Boiler Model Scale</h3>
+            <p>A detailed physical scale model of a stoker boiler system, custom-designed and manufactured using precision 3D printing technology.</p>
+          </div>
+        </div>
+
         <div class="project-item" onclick="window.location.href='simulations/physics-simulations.html'">
           <div class="project-image">
             <img src="assets/images/physics-sim.svg" alt="Physics Simulations" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjhmOWZhIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5QaHlzaWNzIFNpbXVsYXRpb25zPC90ZXh0Pgo8L3N2Zz4='">
@@ -45,23 +56,13 @@
           </div>
         </div>
 
-        <div class="project-item" onclick="window.location.href='boiler-system.html'">
+        <div class="project-item" onclick="window.location.href='process-visualization.html'">
           <div class="project-image">
-            <img src="assets/images/boiler-system.svg" alt="Boiler System" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjhmOWZhIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Cb2lsZXIgU3lzdGVtPC90ZXh0Pgo8L3N2Zz4='">
+            <img src="assets/images/boiler-system.svg" alt="Process Visualization" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjhmOWZhIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5QaHlzaWNzIFNpbXVsYXRpb25zPC90ZXh0Pgo8L3N2Zz4='">
           </div>
           <div class="project-info">
-            <h3>Boiler System</h3>
-            <p>Complete stoker boiler system installation and optimization for industrial steam production.</p>
-          </div>
-        </div>
-
-        <div class="project-item" onclick="window.location.href='distribution-network.html'">
-          <div class="project-image">
-            <img src="assets/images/distribution.svg" alt="Distribution Network" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjhmOWZhIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5EaXN0cmlidXRpb24gTmV0d29yazwvdGV4dD4KPC9zdmc+'">
-          </div>
-          <div class="project-info">
-            <h3>Distribution Network</h3>
-            <p>Steam distribution audit and optimization for industrial facilities.</p>
+            <h3>Process Visualization</h3>
+            <p>Interactive process visualization tools for industrial applications.</p>
           </div>
         </div>
       </div>
@@ -71,14 +72,13 @@
   <!-- SECTION: ABOUT US -->
   <section id="about" class="page-section">
     <div class="section-container">
-      <div class="page-title">About Us</div>
+      <div class="page-title">About Pabrikin Labs</div>
       <div class="about-grid">
         <div class="about-content">
-          <h3>Pabrikin Labs</h3>
           <p>We are a strategic partner specializing in manufacturing and industrial energy optimization. Our expertise covers boiler systems, steam distribution networks, and process optimization for various industrial applications.</p>
           <div class="contact-info">
-            <p>📍 Cilegon, Banten, Indonesia</p>
-            <p>📧 contact@pabrikin.com</p>
+            <p>📍 Surabaya, Indonesia</p>
+            <p>📧 pabrikin.labs@gmail.com</p>
           </div>
         </div>
         <div class="contact-form">
@@ -94,17 +94,6 @@
     </div>
   </section>
 </div>
-
-<footer>
-  <div class="footer-status">
-    <div class="status-indicator"><div class="dot"></div>SYSTEM STATUS: ONLINE</div>
-    <span>|</span> <span>LOCATION: CILEGON, BANTEN</span> <span>|</span>
-    <span id="live-clock">00:00:00</span>
-  </div>
-  <div class="footer-copyright">
-    © 2026 <a href="https://linktr.ee/pabrikin" target="_blank" class="footer-link">Pabrikin Labs</a>
-  </div>
-</footer>
 
 <div class="info-popup" id="info-popup">
   <div class="info-popup-title" id="popup-title">Title</div>

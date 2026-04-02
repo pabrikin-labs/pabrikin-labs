@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Physics Simulations | Pabrikin Labs</title>
-  <link rel="icon" type="image/svg+xml" href="../assets/images/logo-pabrikin.svg">
+  <title>Pabrikin Labs | Physics Simulations</title>
   <link rel="stylesheet" href="../css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     .simulations-container {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
     }
     .simulation-section {
       background: var(--panel);
@@ -23,7 +22,8 @@
     .simulation-section h2 {
       color: var(--accent-blue);
       margin-bottom: 15px;
-      font-family: var(--font-text);
+      font-family: 'Rajdhani';
+      text-transform: uppercase;
     }
     .simulation-section .formula-display {
       background: var(--panel2);
@@ -31,10 +31,9 @@
       border-radius: 8px;
       padding: 15px;
       margin-bottom: 20px;
-      font-family: var(--font-formula);
-      font-style: italic;
+      font-family: 'Share Tech Mono';
       color: var(--accent-yellow);
-      text-align: center;
+      text-align: left;
       font-size: 1.2rem;
     }
     .input-group {
@@ -49,23 +48,24 @@
       gap: 5px;
     }
     .input-field label {
-      font-family: var(--font-text);
+      font-family: 'Rajdhani', sans-serif;
       color: var(--accent-cyan);
       font-size: 0.9rem;
+      text-transform: uppercase;
     }
     .input-field input {
-      background: var(--color-dark-bg);
+      background: #0f172a;
       border: 1px solid var(--border);
       padding: 10px;
-      color: var(--color-white);
+      color: #fff;
       border-radius: 6px;
-      font-family: var(--font-diagram);
+      font-family: 'Share Tech Mono';
       width: 120px;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
     .input-field input:focus {
       border-color: var(--accent-blue);
-      box-shadow: 0 0 0 2px var(--color-overlay-blue-xlight);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
       outline: none;
     }
     .sim-btn {
@@ -76,17 +76,18 @@
       border-radius: 6px;
       font-weight: 800;
       cursor: pointer;
-      font-family: var(--font-text);
+      font-family: 'Rajdhani';
+      text-transform: uppercase;
       margin-bottom: 20px;
       transition: all 0.3s ease;
     }
     .sim-btn:hover {
-      background: var(--accent-cyan);
+      background: #60a5fa;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px var(--color-overlay-blue-heavy);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
     }
     .canvas-container {
-      background: var(--color-black);
+      background: #000;
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 20px;
@@ -106,9 +107,10 @@
       padding: 20px;
     }
     .graph-card h4 {
-      font-family: var(--font-text);
+      font-family: 'Rajdhani';
       color: var(--accent-yellow);
       margin-bottom: 10px;
+      text-transform: uppercase;
     }
     .result-display {
       background: var(--panel2);
@@ -116,14 +118,14 @@
       border-radius: 8px;
       padding: 15px;
       margin-top: 15px;
-      font-family: var(--font-diagram);
+      font-family: 'Share Tech Mono';
       color: var(--accent-green);
-      text-align: center;
+      text-align: left;
       font-size: 1.1rem;
       transition: all 0.3s ease;
     }
     .result-display:hover {
-      background: var(--color-overlay-green);
+      background: rgba(34, 197, 94, 0.1);
       border-color: var(--accent-green);
     }
     .back-btn {
@@ -133,7 +135,8 @@
       padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
-      font-family: var(--font-text);
+      font-family: 'Rajdhani';
+      text-transform: uppercase;
       margin-top: 20px;
     }
     .back-btn:hover {
@@ -141,7 +144,7 @@
     }
     /* New Simulations Styles */
     .projectile-canvas {
-      background: linear-gradient(to bottom, #87ceeb 0%, var(--color-white) 100%);
+      background: linear-gradient(to bottom, #87ceeb 0%, #ffffff 100%);
       border-radius: 8px;
     }
     .doppler-container {
@@ -153,13 +156,13 @@
     .doppler-source {
       width: 20px;
       height: 20px;
-      background: var(--accent-red);
+      background: #ff4444;
       border-radius: 50%;
       position: relative;
     }
     .wave-circle {
       position: absolute;
-      border: 2px solid var(--color-overlay-red);
+      border: 2px solid rgba(255, 68, 68, 0.3);
       border-radius: 50%;
       animation: waveExpand 2s infinite ease-out;
     }
@@ -178,14 +181,14 @@
       position: absolute;
       width: 2px;
       height: 150px;
-      background: var(--accent-blue);
+      background: #38bdf8;
       transform-origin: top center;
       animation: swing 2s infinite ease-in-out;
     }
     .pendulum-ball {
       width: 20px;
       height: 20px;
-      background: var(--accent-blue);
+      background: #38bdf8;
       border-radius: 50%;
       position: absolute;
       bottom: 0;
@@ -208,7 +211,8 @@
       padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
-      font-family: var(--font-text);
+      font-family: 'Rajdhani';
+      text-transform: uppercase;
       font-size: 0.8rem;
     }
     .control-btn:hover {
@@ -236,16 +240,18 @@
 </head>
 <body>
   <header>
-    <div class="header-title" onclick="window.location.href='../index.html'">
-      <span class="logo-wrapper" id="logo-place" onclick="window.location.href='../index.html'"></span>
-      Pabrikin Labs
+    <div class="header-title" style="cursor: default;">
+      <span class="logo-wrapper" onclick="window.location.href='../index.html'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="height: 100%; width: auto; color: var(--text);"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      </span>
+      Physics Simulations
     </div>
   </header>
 
   <div class="main-content">
     <div class="simulations-container">
       <div class="page-title">Physics Simulations Collection</div>
-      <p style="color: var(--text-dim); margin-bottom: 40px; text-align: center;">
+      <p style="color: var(--text-dim); margin-bottom: 40px; text-align: left;">
         Interactive physics simulations designed to support high school (SMA) learning.
         All simulations are arranged vertically for comprehensive study.
       </p>
@@ -496,31 +502,11 @@
           Period: 0 s | Angular Frequency: 0 rad/s | Max Velocity: 0 m/s
         </div>
       </div>
-
-      <button class="back-btn" onclick="window.location.href='../index.html#page-projects'">← Back</button>
     </div>
   </div>
 
-  <footer>
-    <div class="footer-status">
-      <div class="status-indicator"><div class="dot"></div>SIMULATION STATUS: READY</div>
-      <span>|</span> <span>LOCATION: CILEGON, BANTEN</span> <span>|</span>
-      <span id="live-clock">00:00:00</span>
-    </div>
-    <div class="footer-copyright">
-      © 2026 <a href="https://linktr.ee/pabrikin" target="_blank" class="footer-link">Pabrikin Labs</a>
-    </div>
-  </footer>
-
   <script src="../js/main.js"></script>
   <script>
-    // Get CSS variables
-    const cssVars = {
-      accentBlue: getComputedStyle(document.documentElement).getPropertyValue('--accent-blue').trim(),
-      accentGreen: getComputedStyle(document.documentElement).getPropertyValue('--accent-green').trim(),
-      textDim: getComputedStyle(document.documentElement).getPropertyValue('--text-dim').trim(),
-      diagramGlow: getComputedStyle(document.documentElement).getPropertyValue('--diagram-glow').trim()
-    };
     // GLB Calculation
     document.getElementById('glb-calc').addEventListener('click', () => {
       const v = parseFloat(document.getElementById('glb-v').value) || 0;
@@ -556,8 +542,8 @@
         datasets: [{
           label: 'Position (m)',
           data: [],
-          borderColor: cssVars.accentBlue,
-          backgroundColor: cssVars.accentBlue + '1a',
+          borderColor: '#38bdf8',
+          backgroundColor: 'rgba(56, 189, 248, 0.1)',
           tension: 0.4
         }]
       },
@@ -577,8 +563,8 @@
         datasets: [{
           label: 'Velocity (m/s)',
           data: [],
-          borderColor: cssVars.accentGreen,
-          backgroundColor: cssVars.accentGreen + '1a',
+          borderColor: '#22c55e',
+          backgroundColor: 'rgba(34, 197, 94, 0.1)',
           tension: 0.4
         }]
       },
@@ -603,7 +589,7 @@
       glbbCtx.clearRect(0, 0, glbbCanvas.width, glbbCanvas.height);
 
       // Draw track
-      glbbCtx.strokeStyle = cssVars.textDim;
+      glbbCtx.strokeStyle = '#94a3b8';
       glbbCtx.lineWidth = 2;
       glbbCtx.beginPath();
       glbbCtx.moveTo(50, glbbCanvas.height / 2);
@@ -612,7 +598,7 @@
 
       // Draw object
       const objX = 50 + (x / 100) * (glbbCanvas.width - 100);
-      glbbCtx.fillStyle = cssVars.accentBlue;
+      glbbCtx.fillStyle = '#38bdf8';
       glbbCtx.beginPath();
       glbbCtx.arc(objX, glbbCanvas.height / 2, 10, 0, 2 * Math.PI);
       glbbCtx.fill();
@@ -1033,7 +1019,6 @@
       shmCanvas.height = 200;
     }
     resizeShmCanvas();
-    window.addEventListener('resize', resizeShmCanvas);
 
     function shmStart() {
       if (shmIsRunning) return;
@@ -1111,41 +1096,24 @@
         shmCtx.fill();
       } else {
         // Draw spring-mass
-        const fixedX = centerX - 100; // Fixed point of spring
         const massX = centerX + displacement * scale;
-        const massWidth = 30;
-        const massHeight = 30;
-        const springEndX = massX - massWidth / 2;
 
-        // Draw spring as sinusoidal curve
+        // Draw spring
         shmCtx.strokeStyle = '#94a3b8';
         shmCtx.lineWidth = 3;
         shmCtx.beginPath();
-        shmCtx.moveTo(fixedX, centerY);
-
-        const springLength = springEndX - fixedX;
-        const numWaves = 6;
-        const amplitude = 8;
-
-        for (let i = 1; i <= numWaves * 2; i++) {
-          const t = i / (numWaves * 2);
-          const x = fixedX + t * springLength;
-          const y = centerY + amplitude * Math.sin(t * numWaves * Math.PI);
+        shmCtx.moveTo(centerX - 50, centerY);
+        for (let i = 0; i < 10; i++) {
+          const x = centerX - 50 + i * 10;
+          const y = centerY + (i % 2 === 0 ? 10 : -10);
           shmCtx.lineTo(x, y);
         }
-
-        shmCtx.lineTo(springEndX, centerY);
+        shmCtx.lineTo(massX - 20, centerY);
         shmCtx.stroke();
 
         // Draw mass
         shmCtx.fillStyle = '#38bdf8';
-        shmCtx.fillRect(massX - massWidth / 2, centerY - massHeight / 2, massWidth, massHeight);
-
-        // Draw mass label
-        shmCtx.fillStyle = '#e2e8f0';
-        shmCtx.font = '12px Share Tech Mono';
-        shmCtx.textAlign = 'center';
-        shmCtx.fillText('m', massX, centerY + 4);
+        shmCtx.fillRect(massX - 15, centerY - 15, 30, 30);
       }
     }
 
@@ -1153,5 +1121,4 @@
     shmStopBtn.addEventListener('click', shmStop);
   </script>
 </body>
-</html></content>
-<parameter name="filePath">d:\Visual Studio Code\Pabrikin Labs\pabrikin-labs\physics-simulations.html
+</html>
